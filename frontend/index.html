@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sarodyatra · Kolkata Durga Puja map, planner &amp; guide</title>
+<meta name="description" content="Sarodyatra — plan your Kolkata Durga Puja night: every pandal on the map, crowds hour by hour, metro, local trains and buses, closed roads, a door-to-door plan and a 3D trip. English · বাংলা · हिंदी.">
+<meta name="theme-color" content="#A3141D">
+<meta property="og:title" content="Sarodyatra">
+<meta property="og:description" content="Kolkata Durga Puja: pandals, crowds, metro, local trains, buses, closed roads and a door-to-door plan.">
+<meta property="og:image" content="assets/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="vendor/fonts.css">
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="stylesheet" href="vendor/maplibre-gl.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- shading for the glossy 3D map pins (U.gpin): defined once, used by every pin -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <radialGradient id="gpShade" cx="34%" cy="22%" r="85%">
+    <stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".22" stop-color="#fff" stop-opacity=".12"/>
+    <stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".42"/></radialGradient>
+  <linearGradient id="gpSide" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".62" stop-color="#000" stop-opacity="0"/>
+    <stop offset=".9" stop-color="#000" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity=".22"/></linearGradient>
+  <linearGradient id="gpWall" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#000" stop-opacity=".5"/><stop offset=".6" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity=".18"/></linearGradient>
+  <radialGradient id="gpSpec" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+</defs></svg>
+
+<!-- ═══════════ top bar ═══════════ -->
+<header class="top">
+  <a class="brand" href="#" id="brand" aria-label="Sarodyatra">
+    <img src="assets/logo-256.png" alt="" width="50" height="50">
+    <span class="brand-txt">
+      <span class="wm" lang="en"><b class="wm-en">Sarodyatra</b></span>
+      <small data-i18n="brand.tag"></small>
+    </span>
+  </a>
+
+  <div class="search" role="search">
+    <i data-icon="search"></i>
+    <input id="searchInput" type="search" autocomplete="off" data-i18n-ph="search.ph" data-i18n-title="search.ph">
+    <div class="drop" id="searchDrop" role="listbox"></div>
+  </div>
+
+  <div class="when">
+    <button class="pick" id="dayBtn" data-i18n-title="top.day"><i data-icon="calendar"></i><span class="pick-txt"><b id="dayLabel"></b><small id="dayDate"></small></span><i data-icon="chevron" class="chev"></i></button>
+    <button class="pick" id="timeBtn" data-i18n-title="top.time"><i data-icon="clock"></i><span class="pick-txt"><b id="timeLabel"></b></span><i data-icon="chevron" class="chev"></i></button>
+  </div>
+
+  <button class="status" id="statusBtn"><span class="dot"></span><span id="statusText"></span></button>
+
+  <div class="lang" role="group" data-i18n-title="g.language" id="langSwitch"></div>
+
+  <button class="icon-btn" id="savedBtn" data-i18n-title="top.saved"><i data-icon="bookmark"></i></button>
+</header>
+
+<div class="pop" id="dayPop" hidden></div>
+<div class="pop" id="timePop" hidden></div>
+<div class="pop pop-saved" id="savedPop" hidden></div>
+
+<!-- ═══════════ workspace ═══════════ -->
+<main class="shell" id="shell">
+
+  <!-- left: plan & filters -->
+  <aside class="left" id="left">
+    <div class="left-head">
+      <h1 data-i18n="plan.title"></h1>
+      <button class="ghost-btn" id="resetBtn"><i data-icon="reset"></i><span data-i18n="plan.reset"></span></button>
+    </div>
+
+    <div class="seg zones" id="zoneTabs" role="tablist"></div>
+    <div class="cats" id="catChips"></div>
+
+    <button class="more-toggle" id="moreBtn"><i data-icon="sliders"></i><span id="moreLabel"></span></button>
+    <div class="more" id="morePanel" hidden>
+      <label class="fld"><span data-i18n="filter.name"></span><input id="fName" type="search" autocomplete="off"></label>
+      <label class="fld"><span data-i18n="filter.popularity"></span>
+        <span class="range"><input id="fPop" type="range" min="1" max="5" value="1"><output id="fPopVal"></output></span></label>
+      <label class="fld"><span data-i18n="filter.crowd"></span><select id="fCrowd"></select></label>
+      <label class="fld"><span data-i18n="filter.metro"></span><select id="fMetro"></select></label>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab on" data-tab="plan" data-i18n="tab.plan"></button>
+      <button class="tab" data-tab="explore" data-i18n="tab.explore"></button>
+    </div>
+
+    <div class="left-body">
+      <section class="tabpane on" id="tabPlan">
+        <div class="plan-meta" id="planMeta"></div>
+        <ol class="stops" id="stops"></ol>
+        <div class="add-stop">
+          <i data-icon="plus"></i>
+          <input id="stopInput" type="search" autocomplete="off" data-i18n-ph="plan.addStop">
+          <div class="drop" id="stopDrop"></div>
+        </div>
+        <div class="opts">
+          <label class="fld"><span data-i18n="plan.travel"></span><select id="plTravel"></select></label>
+          <label class="fld"><span data-i18n="plan.mode"></span><select id="plMode"></select></label>
+          <label class="fld"><span data-i18n="plan.startAt"></span><input id="plStart" type="time" value="18:00"></label>
+          <label class="fld"><span data-i18n="plan.budget"></span><select id="plBudget"></select></label>
+          <label class="tog"><input type="checkbox" id="plOpt" checked><span data-i18n="plan.optimise"></span></label>
+          <label class="tog"><input type="checkbox" id="plReturn"><span id="plReturnLbl"></span></label>
+        </div>
+        <div class="warns" id="planWarns"></div>
+      </section>
+      <section class="tabpane" id="tabExplore">
+        <div class="count" id="exploreCount"></div>
+        <div class="list" id="exploreList"></div>
+      </section>
+    </div>
+
+    <div class="left-foot">
+      <button class="btn primary full" id="planBtn"><i data-icon="route"></i><span data-i18n="plan.run"></span></button>
+    </div>
+  </aside>
+
+  <!-- centre: map -->
+  <section class="mapwrap" id="mapwrap">
+    <div id="map"></div>
+
+    <div class="chips" id="layerChips"></div>
+    <div class="lpanel" id="layerPanel" hidden></div>
+
+    <div class="wx" id="weather" hidden></div>
+
+    <div class="ctrls">
+      <button class="ctl" id="zoomIn" data-i18n-title="g.zoomIn"><i data-icon="plus"></i></button>
+      <button class="ctl" id="zoomOut" data-i18n-title="g.zoomOut"><i data-icon="minus"></i></button>
+      <button class="ctl" id="locBtn" data-i18n-title="g.myLocation"><i data-icon="locate"></i></button>
+      <button class="ctl sos" id="sosBtn" data-i18n-title="sos.title" data-i18n="sos"></button>
+    </div>
+
+    <button class="basesw" id="baseSw"><span class="thumb" id="baseThumb"></span><span id="baseLabel"></span></button>
+    <div class="legend" id="legend"></div>
+    <button class="alert-pill" id="closurePill" hidden><i data-icon="block"></i><span id="closurePillTxt"></span></button>
+    <div class="banner" id="banner" hidden></div>
+
+    <!-- Sarathi: floating button (Maa's three eyes) + chat window -->
+    <div class="ai-greet" id="aiGreet" hidden><span id="aiGreetText"></span><button class="ag-x" id="aiGreetX" data-i18n-title="g.close"><i data-icon="x"></i></button></div>
+    <button class="fab" id="sarathiFab" data-i18n-title="ai.open" aria-controls="ai" aria-expanded="false">
+      <span class="fab-orb">
+        <svg class="nayan" viewBox="0 0 48 48" aria-hidden="true">
+          <g transform="translate(0 4.6)" fill="none" stroke="#F4B63A" stroke-linecap="round" stroke-linejoin="round">
+            <g class="lid"><path d="M24 2.4C28.2 7.2 29.8 10.8 29.8 13.9 29.8 17.4 27.6 20 24 22 20.4 20 18.2 17.4 18.2 13.9 18.2 10.8 19.8 7.2 24 2.4Z" stroke-width="1.9" fill="rgba(255,240,205,.08)"/>
+              <g class="iris"><circle cx="24" cy="14" r="2.9" stroke-width="1.5"/><circle cx="24" cy="14" r="1.35" fill="#FFE7A8" stroke="none"/></g></g>
+            <path class="brow" d="M20.6 24.4C16.4 21.8 10.2 21.6 4.6 24.4M27.4 24.4C31.6 21.8 37.8 21.6 43.4 24.4" stroke-width="1.4"/>
+            <g class="lid"><path d="M21.6 32.6C18.6 27 11.6 25.8 6.6 29.2 5.1 28.3 3.9 27.1 2.6 25.4M21.6 32.6C17.6 35.4 10.6 35 6.6 29.2" stroke-width="1.9"/>
+              <g class="iris"><circle cx="14.2" cy="30.4" r="3.1" stroke-width="1.5"/><circle cx="14.2" cy="30.4" r="1.45" fill="#FFE7A8" stroke="none"/></g></g>
+            <g class="lid"><path d="M26.4 32.6C29.4 27 36.4 25.8 41.4 29.2 42.9 28.3 44.1 27.1 45.4 25.4M26.4 32.6C30.4 35.4 37.4 35 41.4 29.2" stroke-width="1.9"/>
+              <g class="iris"><circle cx="33.8" cy="30.4" r="3.1" stroke-width="1.5"/><circle cx="33.8" cy="30.4" r="1.45" fill="#FFE7A8" stroke="none"/></g></g>
+          </g>
+          <circle class="spark s1" cx="6" cy="9" r="1.2" fill="#F4B63A"/><circle class="spark s2" cx="42" cy="9" r="1.1" fill="#F4B63A"/><circle class="spark s3" cx="24" cy="45" r="1" fill="#FFE7A8"/>
+        </svg>
+      </span>
+      <span class="fab-ring"></span><span class="fab-ring r2"></span>
+    </button>
+    <section class="ai-win" id="ai" aria-hidden="true">
+      <header class="ai-head">
+        <span class="ai-orb"><svg class="nayan sm" viewBox="0 0 48 48" aria-hidden="true">
+          <g transform="translate(0 4.6)" fill="none" stroke="#F4B63A" stroke-linecap="round" stroke-linejoin="round">
+            <g class="lid"><path d="M24 2.4C28.2 7.2 29.8 10.8 29.8 13.9 29.8 17.4 27.6 20 24 22 20.4 20 18.2 17.4 18.2 13.9 18.2 10.8 19.8 7.2 24 2.4Z" stroke-width="1.9" fill="rgba(255,240,205,.08)"/>
+              <g class="iris"><circle cx="24" cy="14" r="2.9" stroke-width="1.5"/><circle cx="24" cy="14" r="1.35" fill="#FFE7A8" stroke="none"/></g></g>
+            <path class="brow" d="M20.6 24.4C16.4 21.8 10.2 21.6 4.6 24.4M27.4 24.4C31.6 21.8 37.8 21.6 43.4 24.4" stroke-width="1.4"/>
+            <g class="lid"><path d="M21.6 32.6C18.6 27 11.6 25.8 6.6 29.2 5.1 28.3 3.9 27.1 2.6 25.4M21.6 32.6C17.6 35.4 10.6 35 6.6 29.2" stroke-width="1.9"/>
+              <g class="iris"><circle cx="14.2" cy="30.4" r="3.1" stroke-width="1.5"/><circle cx="14.2" cy="30.4" r="1.45" fill="#FFE7A8" stroke="none"/></g></g>
+            <g class="lid"><path d="M26.4 32.6C29.4 27 36.4 25.8 41.4 29.2 42.9 28.3 44.1 27.1 45.4 25.4M26.4 32.6C30.4 35.4 37.4 35 41.4 29.2" stroke-width="1.9"/>
+              <g class="iris"><circle cx="33.8" cy="30.4" r="3.1" stroke-width="1.5"/><circle cx="33.8" cy="30.4" r="1.45" fill="#FFE7A8" stroke="none"/></g></g>
+          </g>
+          <circle class="spark s1" cx="6" cy="9" r="1.2" fill="#F4B63A"/><circle class="spark s2" cx="42" cy="9" r="1.1" fill="#F4B63A"/><circle class="spark s3" cx="24" cy="45" r="1" fill="#FFE7A8"/>
+        </svg></span>
+        <h2 data-i18n="ai.title"></h2>
+        <button class="icon-btn sm ai-voice" id="aiVoice" data-i18n-title="v.chatToggle" aria-pressed="true"><i data-icon="volume"></i></button>
+        <button class="icon-btn sm" id="aiClear" data-i18n-title="ai.clear"><i data-icon="reset"></i></button>
+        <button class="icon-btn sm" id="aiExpand" data-i18n-title="ai.expand"><i data-icon="expand"></i></button>
+        <button class="icon-btn sm" id="aiClose" data-i18n-title="g.close"><i data-icon="x"></i></button>
+      </header>
+      <div class="ai-body" id="aiBody"></div>
+      <form class="ai-input" id="aiForm">
+        <button type="button" class="icon-btn sm" id="aiMic" data-i18n-title="ai.voice"><i data-icon="mic"></i></button>
+        <input id="aiInput" autocomplete="off" data-i18n-ph="ai.ph">
+        <button class="send" data-i18n-title="ai.send"><i data-icon="send"></i></button>
+      </form>
+    </section>
+
+    <button class="edge e-left" id="toggleLeft" data-i18n-title="g.collapse"><i data-icon="chevronL"></i></button>
+    <button class="edge e-right" id="toggleRight" data-i18n-title="g.collapse"><i data-icon="chevronR"></i></button>
+  </section>
+
+  <!-- right: place card -->
+  <aside class="right" id="right">
+    <article class="card" id="card" hidden></article>
+  </aside>
+</main>
+
+<!-- bottom: route / plan timeline -->
+<footer class="bar" id="bar" hidden></footer>
+<div class="pop pop-export" id="exportPop" hidden></div>
+
+<!-- mobile tab bar -->
+<nav class="mtabs" id="mtabs">
+  <button data-m="plan" class="on"><i data-icon="route"></i><span data-i18n="g.mobilePlan"></span></button>
+  <button data-m="map"><i data-icon="layers"></i><span data-i18n="g.mobileMap"></span></button>
+</nav>
+
+<!-- emergency sheet -->
+<div class="modal" id="sosModal" hidden><div class="sheet" id="sosSheet"></div></div>
+<!-- where does the trip start? (no map-centre guessing) -->
+<div class="modal" id="startModal" hidden><div class="sheet start-sheet">
+  <button class="x icon-btn sm" id="stX" data-i18n-title="g.close"><i data-icon="x"></i></button>
+  <h3 data-i18n="start.title"></h3>
+  <p class="hint" data-i18n="start.sub"></p>
+  <button class="btn primary full" id="stMe"><i data-icon="locate"></i><span data-i18n="start.me"></span></button>
+  <div class="st-or"><span data-i18n="start.or"></span></div>
+  <div class="add-stop"><i data-icon="search"></i><input id="stInput" type="search" autocomplete="off" data-i18n-ph="plan.startPh"><div class="drop" id="stDrop"></div></div>
+  <div class="st-quick" id="stQuick"></div>
+</div></div>
+<!-- data & GeoServer -->
+<div class="modal" id="dataModal" hidden><div class="sheet wide" id="dataSheet"></div></div>
+
+<!-- 3D trip view -->
+<div class="t3" id="t3" hidden>
+  <div id="map3d"></div>
+  <div class="t3-top" id="t3Top"></div>
+  <div class="t3-stats" id="t3Stats"></div>
+  <div class="t3-ctrl" id="t3Ctrl"></div>
+  <div class="t3-stop" id="t3Stop" hidden></div>
+  <aside class="t3-near" id="t3Near" hidden></aside>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="vendor/leaflet.js"></script>
+<script src="js/config.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/util.js"></script>
+<script src="js/oh.js"></script>
+<script src="js/ogc.js"></script>
+<script src="js/map.js"></script>
+<script src="js/clock.js"></script>
+<script src="js/crowd.js"></script>
+<script src="js/pandals.js"></script>
+<script src="js/metro.js"></script>
+<script src="js/roads.js"></script>
+<script src="js/rail.js"></script>
+<script src="js/layers.js"></script>
+<script src="js/card.js"></script>
+<script src="js/route.js"></script>
+<script src="js/planner.js"></script>
+<script src="js/bar.js"></script>
+<script src="js/nearby.js"></script>
+<script src="js/saved.js"></script>
+<script src="js/report.js"></script>
+<script src="js/export.js"></script>
+<script src="js/datapanel.js"></script>
+<script src="js/weather.js"></script>
+<script src="js/voice.js"></script>
+<script src="js/trip3d.js"></script>
+<script src="js/agent.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Sarodyatra on Render — one web service runs the FastAPI backend and serves the website (same origin).
+# Render → New → Blueprint → pick this GitHub repo. It reads this file. Enter your Gemini keys when asked.
+services:
+  - type: web
+    name: sarodyatra
+    runtime: python
+    plan: free                      # 0.1 CPU · 512 MB RAM — the app trims its memory after each plan to stay inside it
+    region: singapore               # closest Render region to Kolkata
+    buildCommand: pip install --upgrade pip && pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips "*"
+    healthCheckPath: /api/ping
+    autoDeployTrigger: commit       # every git push to the branch redeploys
+    envVars:
+      - key: PYTHONUTF8
+        value: "1"
+      - key: MALLOC_ARENA_MAX       # fewer malloc arenas → lower memory with the routing thread pool
+        value: "2"
+      - key: OFFLINE_PREFETCH       # no 30 MB tile download on a server; tiles are cached as visitors use them
+        value: "0"
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: GEMINI_API_KEYS        # secret: Render asks for it once (comma-separated keys); Sarathi works without it too
+        sync: false

@@ -1,0 +1,14 @@
+{
+  "name": "Sarodyatra · Kolkata Durga Puja",
+  "short_name": "Sarodyatra",
+  "description": "Kolkata Durga Puja map, planner and guide — pandals, crowds, metro, local trains, buses and closed roads.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FBF7F0",
+  "theme_color": "#A3141D",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/logo.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "app": "Sarodyatra",
+  "city_center": [22.5626, 88.3630],
+  "bbox": [88.24, 22.42, 88.50, 22.70],
+  "walk_m_per_min": 72,
+  "crowd_walk_slowdown": 0.25,
+  "drive_kmh": {"main": 22, "important": 18, "lane": 12},
+  "taxi_fare": {"base": 50, "base_km": 2, "per_km": 18, "note": "Rough app-cab estimate for planning only - actual fares vary (surge during Puja)."},
+  "metro_fare_estimate": 20,
+  "walk_only_under_m": 1600,
+  "queue_base_min": {"5": 45, "4": 25, "3": 12, "2": 6, "1": 3},
+  "visit_min": {"top": 15, "bonedi": 15, "para": 8},
+  "emergency": [
+    {"label": "National emergency", "number": "112"},
+    {"label": "Police", "number": "100"},
+    {"label": "Fire", "number": "101"},
+    {"label": "Ambulance", "number": "102"},
+    {"label": "Women helpline", "number": "1091"},
+    {"label": "Child helpline", "number": "1098"}
+  ],
+  "overpass": ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter", "https://overpass.private.coffee/api/interpreter"]
+}

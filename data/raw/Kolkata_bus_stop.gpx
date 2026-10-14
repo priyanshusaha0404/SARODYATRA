@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="overpass-turbo"><metadata><desc>Filtered OSM data converted to GPX by overpass turbo</desc><copyright author="The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."/><time>2025-09-21T13:43:45Z</time></metadata><wpt lat="22.5021252" lon="88.3617949"><name>South City Mall</name><desc>bus=yes
+highway=bus_stop
+name=South City Mall
+public_transport=stop_position</desc><link href="http://osm.org/browse/node/419272417"/></wpt><wpt lat="22.5029575" lon="88.3677326"><name>Jadavpur Thana</name><desc>alt_name=Bengal Lamp
+bus=yes
+highway=bus_stop
+name=Jadavpur Thana
+public_transport=platform</desc><link href="http://osm.org/browse/node/419272419"/></wpt><wpt lat="22.5260927" lon="88.3956743"><name>VIP Bazar</name><desc>bus=yes
+highway=bus_stop
+name=VIP Bazar
+public_transport=platform</desc><link href="http://osm.org/browse/node/423615236"/></wpt><wpt lat="22.4839937" lon="88.3755826"><name>Baghajatin</name><desc>bus=yes
+highway=bus_stop
+name=Baghajatin
+public_transport=platform</desc><link href="http://osm.org/browse/node/651802692"/></wpt><wpt lat="22.4861449" lon="88.3748101"><name>Annapurna</name><desc>bus=yes
+highway=bus_stop
+name=Annapurna
+public_transport=platform</desc><link href="http://osm.org/browse/node/651803240"/></wpt><wpt lat="22.4885141" lon="88.3731686"><name>Krishna</name><desc>bus=yes
+highway=bus_stop
+name=Krishna
+public_transport=platform</desc><link href="http://osm.org/browse/node/651804166"/></wpt><wpt lat="22.4912303" lon="88.3723103"><name>Sukanta Setu</name><desc>bus=yes
+highway=bus_stop
+name=Sukanta Setu
+name:en=Sulekha Moore
+public_transport=platform</desc><link href="http://osm.org/browse/node/651804431"/></wpt><wpt lat="22.4956536" lon="88.3706122"><name>Jadavpur 8B</name><desc>bus=yes
+highway=bus_stop
+name=Jadavpur 8B
+public_transport=platform</desc><link href="http://osm.org/browse/node/651804657"/></wpt><wpt lat="22.5078133" lon="88.3670532"><name>Dhakuria</name><desc>bus=yes
+highway=bus_stop
+name=Dhakuria
+public_transport=platform</desc><link href="http://osm.org/browse/node/651804962"/></wpt><wpt lat="22.5155838" lon="88.3667742"><name>Golpark</name><desc>bus=yes
+highway=bus_stop
+name=Golpark
+public_transport=platform</desc><link href="http://osm.org/browse/node/651805056"/></wpt><wpt lat="22.5194439" lon="88.365148"><name>Gariahat</name><desc>bus=yes
+highway=bus_stop
+name=Gariahat
+public_transport=platform</desc><link href="http://osm.org/browse/node/651805197"/></wpt><wpt lat="22.5276708" lon="88.3661028"><name>Ballygunj Phari</name><desc>bus=yes
+highway=bus_stop
+name=Ballygunj Phari
+public_transport=platform</desc><link href="http://osm.org/browse/node/651805440"/></wpt><wpt lat="22.6019224" lon="88.3736714"><name>Shyam Bazar Five Point Crossing</name><desc>bus=yes
+highway=bus_stop
+name=Shyam Bazar Five Point Crossing
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/663975778"/></wpt><wpt lat="22.5131109" lon="88.3224906"><name>Taratalla</name><desc>bus=yes
+highway=bus_stop
+name=Taratalla
+public_transport=platform</desc><link href="http://osm.org/browse/node/1272967204"/></wpt><wpt lat="22.499411" lon="88.3177975"><name>Behala Tram Depot</name><desc>bus=yes
+highway=bus_stop
+name=Behala Tram Depot
+public_transport=platform</desc><link href="http://osm.org/browse/node/1272967207"/></wpt><wpt lat="22.533306" lon="88.3272361"><name>Ekbalpore</name><desc>bus=yes
+highway=bus_stop
+name=Ekbalpore
+public_transport=platform</desc><link href="http://osm.org/browse/node/1274128854"/></wpt><wpt lat="22.4948331" lon="88.3164005"><name>Behala Manton</name><desc>bus=yes
+highway=bus_stop
+name=Behala Manton
+public_transport=platform</desc><link href="http://osm.org/browse/node/1274128859"/></wpt><wpt lat="22.5270528" lon="88.3260988"><name>Mominpore</name><desc>bus=yes
+highway=bus_stop
+name=Mominpore
+public_transport=platform</desc><link href="http://osm.org/browse/node/1274128863"/></wpt><wpt lat="22.4869206" lon="88.3129882"><name>Behala Chowrashta</name><desc>bus=yes
+highway=bus_stop
+name=Behala Chowrashta
+public_transport=platform</desc><link href="http://osm.org/browse/node/1274128865"/></wpt><wpt lat="22.4814683" lon="88.3105635"><name>Behala Shakherbajar</name><desc>bus=yes
+highway=bus_stop
+name=Behala Shakherbajar
+public_transport=platform</desc><link href="http://osm.org/browse/node/1274128866"/></wpt><wpt lat="22.510785" lon="88.381874"><name>Haltu</name><desc>bus=yes
+highway=bus_stop
+name=Haltu
+name:bn=হালতু
+public_transport=platform</desc><link href="http://osm.org/browse/node/1327779115"/></wpt><wpt lat="22.50135" lon="88.3449282"><name>Prince Anwar Shah Road</name><desc>bus=yes
+highway=bus_stop
+name=Prince Anwar Shah Road
+public_transport=stop_position</desc><link href="http://osm.org/browse/node/1591425421"/></wpt><wpt lat="22.5127692" lon="88.401791"><name>Ruby Hospital</name><desc>bus=yes
+highway=bus_stop
+name=Ruby Hospital
+public_transport=stop_position</desc><link href="http://osm.org/browse/node/1865813499"/></wpt><wpt lat="22.5320528" lon="88.3530149"><name>Paddapukur</name><desc>bus=yes
+highway=bus_stop
+name=Paddapukur
+public_transport=platform</desc><link href="http://osm.org/browse/node/1983446869"/></wpt><wpt lat="22.5285447" lon="88.3528594"><name>Lansdowne Market</name><desc>bus=yes
+highway=bus_stop
+name=Lansdowne Market
+public_transport=platform</desc><link href="http://osm.org/browse/node/1983446874"/></wpt><wpt lat="22.5175341" lon="88.3524248"><name>Deshapriya Park</name><desc>bus=yes
+highway=bus_stop
+name=Deshapriya Park
+public_transport=platform</desc><link href="http://osm.org/browse/node/1983446886"/></wpt><wpt lat="22.5137208" lon="88.3592993"><name>Vivekananda Park</name><desc>bench=yes
+bin=yes
+bus=yes
+highway=bus_stop
+lit=yes
+name=Vivekananda Park
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/1983446889"/></wpt><wpt lat="22.5171723" lon="88.3455638"><name>Rashbehari</name><desc>bus=yes
+highway=bus_stop
+name=Rashbehari
+public_transport=platform</desc><link href="http://osm.org/browse/node/1983446893"/></wpt><wpt lat="22.5235796" lon="88.352103"><name>Shishumangal</name><desc>bus=yes
+highway=bus_stop
+name=Shishumangal
+public_transport=platform</desc><link href="http://osm.org/browse/node/1983446896"/></wpt><wpt lat="22.5258639" lon="88.3631805"><name>Hazra Law College</name><desc>bus=yes
+highway=bus_stop
+name=Hazra Law College
+public_transport=platform</desc><link href="http://osm.org/browse/node/1983446901"/></wpt><wpt lat="22.5252941" lon="88.3313105"><name>Judge Court Lal Batti</name><desc>bus=yes
+highway=bus_stop
+name=Judge Court Lal Batti
+public_transport=platform</desc><link href="http://osm.org/browse/node/1983446903"/></wpt><wpt lat="22.5417517" lon="88.3474426"><name>Exide</name><desc>bench=yes
+bin=no
+bus=yes
+highway=bus_stop
+lit=yes
+name=Exide
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/1983469953"/></wpt><wpt lat="22.5408326" lon="88.3592162"><name>Beckbagan</name><desc>bus=yes
+highway=bus_stop
+name=Beckbagan
+public_transport=platform</desc><link href="http://osm.org/browse/node/1983499741"/></wpt><wpt lat="22.5436154" lon="88.3667626"><name>Park Circus - Seven Point</name><desc>bench=no
+bin=no
+bus=yes
+highway=bus_stop
+lit=yes
+name=Park Circus - Seven Point
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/1983542773"/></wpt><wpt lat="22.5549476" lon="88.3647845"><name>Jora Girja</name><desc>bus=yes
+highway=bus_stop
+name=Jora Girja
+public_transport=platform</desc><link href="http://osm.org/browse/node/1983542778"/></wpt><wpt lat="22.5159671" lon="88.3229547"><name>Mint</name><desc>bus=yes
+highway=bus_stop
+name=Mint
+public_transport=platform</desc><link href="http://osm.org/browse/node/2075106755"/></wpt><wpt lat="22.4946866" lon="88.3454753"><name>Tollygunj Metro</name><desc>bus=yes
+highway=bus_stop
+name=Tollygunj Metro
+public_transport=stop_position</desc><link href="http://osm.org/browse/node/2211350535"/></wpt><wpt lat="22.516947" lon="88.346961"><name>node/2234881761</name><desc>bus=yes
+highway=bus_stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/2234881761"/></wpt><wpt lat="22.5898561" lon="88.3967956"><name>Salt Lake Gate</name><desc>bus=yes
+highway=bus_stop
+name=Salt Lake Gate
+public_transport=platform</desc><link href="http://osm.org/browse/node/2456244815"/></wpt><wpt lat="22.5621921" lon="88.4079664"><name>Belaghata</name><desc>bus=yes
+highway=bus_stop
+name=Belaghata
+public_transport=platform</desc><link href="http://osm.org/browse/node/2461204982"/></wpt><wpt lat="22.5580221" lon="88.4113168"><name>Chingrighata</name><desc>bus=yes
+highway=bus_stop
+name=Chingrighata
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/2461210032"/></wpt><wpt lat="22.5586562" lon="88.4108018"><name>Chingrighata</name><desc>bench=yes
+bin=no
+bus=yes
+highway=bus_stop
+lit=yes
+name=Chingrighata
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/2461214063"/></wpt><wpt lat="22.5525577" lon="88.4063762"><name>Metropolitan</name><desc>bus=yes
+highway=bus_stop
+name=Metropolitan
+public_transport=platform</desc><link href="http://osm.org/browse/node/2461216050"/></wpt><wpt lat="22.5486688" lon="88.4005204"><name>Mathpukur</name><desc>bench=no
+bus=yes
+highway=bus_stop
+name=Mathpukur
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/2461251724"/></wpt><wpt lat="22.5478233" lon="88.4002314"><name>Dhapa</name><desc>bus=yes
+highway=bus_stop
+name=Dhapa
+public_transport=platform</desc><link href="http://osm.org/browse/node/2461251736"/></wpt><wpt lat="22.4719281" lon="88.3897463"><name>Patuli</name><desc>bus=yes
+highway=bus_stop
+name=Patuli
+public_transport=platform</desc><link href="http://osm.org/browse/node/2498418663"/></wpt><wpt lat="22.5628512" lon="88.3962626"><name>CIT More</name><desc>bus=yes
+highway=bus_stop
+name=CIT More
+public_transport=platform</desc><link href="http://osm.org/browse/node/2790155771"/></wpt><wpt lat="22.4813707" lon="88.3458155"><name>Kudghat</name><desc>bus=yes
+highway=bus_stop
+name=Kudghat
+public_transport=stop_position</desc><link href="http://osm.org/browse/node/3157361872"/></wpt><wpt lat="22.5755184" lon="88.3733021"><name>Rajabazaar Crossing</name><desc>bus=yes
+highway=bus_stop
+name=Rajabazaar Crossing
+public_transport=platform</desc><link href="http://osm.org/browse/node/3410371984"/></wpt><wpt lat="22.5146691" lon="88.3904126"><name>Nabapally</name><desc>bus=yes
+highway=bus_stop
+name=Nabapally
+public_transport=platform</desc><link href="http://osm.org/browse/node/3410884040"/></wpt><wpt lat="22.5504286" lon="88.3628561"><name>nonapukur</name><desc>bus=yes
+highway=bus_stop
+name=nonapukur
+public_transport=platform</desc><link href="http://osm.org/browse/node/4170884119"/></wpt><wpt lat="22.6028257" lon="88.3735084"><name>Shyambazer Bata</name><desc>bus=yes
+highway=bus_stop
+name=Shyambazer Bata
+public_transport=platform</desc><link href="http://osm.org/browse/node/4170915490"/></wpt><wpt lat="22.6061583" lon="88.3743216"><name>node/4178725334</name><desc>bus=yes
+highway=bus_stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/4178725334"/></wpt><wpt lat="22.61818" lon="88.3791799"><name>Chiriya more</name><desc>bench=yes
+bus=yes
+highway=bus_stop
+name=Chiriya more
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/4178727273"/></wpt><wpt lat="22.6092111" lon="88.3758255"><name>node/4178789854</name><desc>bus=yes
+highway=bus_stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/4178789854"/></wpt><wpt lat="22.6124082" lon="88.3772426"><name>node/4178806613</name><desc>bus=yes
+highway=bus_stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/4178806613"/></wpt><wpt lat="22.5610521" lon="88.3506582"><name>node/4183313094</name><desc>bus=yes
+highway=bus_stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/4183313094"/></wpt><wpt lat="22.5133156" lon="88.4013174"><name>Ruby</name><desc>bus=yes
+highway=bus_stop
+name=Ruby
+public_transport=platform</desc><link href="http://osm.org/browse/node/4195415967"/></wpt><wpt lat="22.513245" lon="88.4025652"><name>Ruby Hospital</name><desc>bus=yes
+highway=bus_stop
+name=Ruby Hospital
+public_transport=platform</desc><link href="http://osm.org/browse/node/4195415969"/></wpt><wpt lat="22.5139833" lon="88.401584"><name>Ruby</name><desc>bus=yes
+highway=bus_stop
+name=Ruby
+public_transport=platform</desc><link href="http://osm.org/browse/node/4198857274"/></wpt><wpt lat="22.5140844" lon="88.3955136"><name>Siemens</name><desc>bus=yes
+highway=bus_stop
+name=Siemens
+public_transport=platform</desc><link href="http://osm.org/browse/node/4198894030"/></wpt><wpt lat="22.514033" lon="88.3952865"><name>Siemens</name><desc>bus=yes
+highway=bus_stop
+name=Siemens
+public_transport=platform</desc><link href="http://osm.org/browse/node/4198894031"/></wpt><wpt lat="22.5192503" lon="88.3852102"><name>Bosepukur Shitalamandir</name><desc>bus=yes
+highway=bus_stop
+name=Bosepukur Shitalamandir
+public_transport=platform</desc><link href="http://osm.org/browse/node/4198894032"/></wpt><wpt lat="22.5192878" lon="88.3853346"><name>Bosepukur Shitalamandir</name><desc>bus=yes
+highway=bus_stop
+name=Bosepukur Shitalamandir
+public_transport=platform</desc><link href="http://osm.org/browse/node/4198894033"/></wpt><wpt lat="22.521226" lon="88.3694508"><name>Ekdalia</name><desc>bus=yes
+highway=bus_stop
+name=Ekdalia
+public_transport=platform</desc><link href="http://osm.org/browse/node/4198894036"/></wpt><wpt lat="22.5209912" lon="88.3687046"><name>Ekdalia</name><desc>bus=yes
+highway=bus_stop
+name=Ekdalia
+public_transport=platform</desc><link href="http://osm.org/browse/node/4198894037"/></wpt><wpt lat="22.5204526" lon="88.3674187"><name>Fern Road</name><desc>bus=yes
+highway=bus_stop
+name=Fern Road
+public_transport=platform</desc><link href="http://osm.org/browse/node/4198894038"/></wpt><wpt lat="22.5204711" lon="88.3671628"><name>Fern Road</name><desc>bus=yes
+highway=bus_stop
+name=Fern Road
+public_transport=platform</desc><link href="http://osm.org/browse/node/4198894039"/></wpt><wpt lat="22.5197789" lon="88.3654297"><name>Gariahat</name><desc>bus=yes
+highway=bus_stop
+name=Gariahat
+public_transport=platform</desc><link href="http://osm.org/browse/node/4198894040"/></wpt><wpt lat="22.5194835" lon="88.3650649"><name>Gariahat</name><desc>bus=yes
+highway=bus_stop
+name=Gariahat
+public_transport=platform</desc><link href="http://osm.org/browse/node/4198894041"/></wpt><wpt lat="22.514006" lon="88.3955159"><name>Siemens</name><desc>bus=yes
+highway=bus_stop
+name=Siemens
+public_transport=platform</desc><link href="http://osm.org/browse/node/4198894042"/></wpt><wpt lat="22.5136754" lon="88.3981379"><name>Narkeldanga</name><desc>bus=yes
+highway=bus_stop
+name=Narkeldanga
+public_transport=platform</desc><link href="http://osm.org/browse/node/4254019154"/></wpt><wpt lat="22.5137952" lon="88.3979581"><name>Narkeldanga</name><desc>bus=yes
+highway=bus_stop
+name=Narkeldanga
+public_transport=platform</desc><link href="http://osm.org/browse/node/4254019155"/></wpt><wpt lat="22.5127574" lon="88.4020774"><name>Ruby</name><desc>bus=yes
+highway=bus_stop
+name=Ruby
+public_transport=platform</desc><link href="http://osm.org/browse/node/4254019156"/></wpt><wpt lat="22.5411554" lon="88.3981365"><name>Science City</name><desc>bus=yes
+highway=bus_stop
+name=Science City
+public_transport=platform</desc><link href="http://osm.org/browse/node/4254019161"/></wpt><wpt lat="22.5125261" lon="88.4086019"><name>Anandapur</name><desc>bus=yes
+highway=bus_stop
+name=Anandapur
+public_transport=platform</desc><link href="http://osm.org/browse/node/4255794609"/></wpt><wpt lat="22.5147581" lon="88.3904034"><name>Nabapally</name><desc>bus=yes
+highway=bus_stop
+name=Nabapally
+public_transport=platform</desc><link href="http://osm.org/browse/node/4255794610"/></wpt><wpt lat="22.5159206" lon="88.3890762"><name>Triborno</name><desc>bus=yes
+highway=bus_stop
+name=Triborno
+public_transport=platform</desc><link href="http://osm.org/browse/node/4255794611"/></wpt><wpt lat="22.5158183" lon="88.388911"><name>Triborno</name><desc>bus=yes
+highway=bus_stop
+name=Triborno
+public_transport=platform</desc><link href="http://osm.org/browse/node/4255794612"/></wpt><wpt lat="22.5195" lon="88.3762022"><name>Post Office</name><desc>bus=yes
+highway=bus_stop
+name=Post Office
+public_transport=platform</desc><link href="http://osm.org/browse/node/4267858525"/></wpt><wpt lat="22.5195785" lon="88.3762239"><name>Post Office</name><desc>bus=yes
+highway=bus_stop
+name=Post Office
+public_transport=platform</desc><link href="http://osm.org/browse/node/4267858526"/></wpt><wpt lat="22.5197791" lon="88.3754284"><name>Kasba Old Police Station</name><desc>bus=yes
+highway=bus_stop
+name=Kasba Old Police Station
+name:bn=কসবা পুরোনো থানা
+name:en=Kasba Old Police Station
+public_transport=platform</desc><link href="http://osm.org/browse/node/4267858527"/></wpt><wpt lat="22.5196384" lon="88.3656241"><name>Gariahat</name><desc>bus=yes
+highway=bus_stop
+name=Gariahat
+public_transport=platform</desc><link href="http://osm.org/browse/node/4267858528"/></wpt><wpt lat="22.5194794" lon="88.3654262"><name>Gariahat</name><desc>bus=yes
+highway=bus_stop
+name=Gariahat
+name:bn=গড়িয়াহাট
+public_transport=platform</desc><link href="http://osm.org/browse/node/4267858529"/></wpt><wpt lat="22.5129318" lon="88.4050373"><name>First Gate</name><desc>bus=yes
+highway=bus_stop
+name=First Gate
+public_transport=platform</desc><link href="http://osm.org/browse/node/4453324601"/></wpt><wpt lat="22.5128474" lon="88.405716"><name>Second Gate</name><desc>bus=yes
+highway=bus_stop
+name=Second Gate
+public_transport=platform</desc><link href="http://osm.org/browse/node/4453324602"/></wpt><wpt lat="22.5126899" lon="88.4071304"><name>Third Gate</name><desc>bus=yes
+highway=bus_stop
+name=Third Gate
+public_transport=platform</desc><link href="http://osm.org/browse/node/4453324603"/></wpt><wpt lat="22.5563202" lon="88.3583221"><name>Taltala bazar</name><desc>bus=yes
+highway=bus_stop
+name=Taltala bazar
+name:en=Taltala bazar
+public_transport=platform</desc><link href="http://osm.org/browse/node/4523697907"/></wpt><wpt lat="22.6034134" lon="88.3783598"><name>R.G. Kar Medical College and Hospital</name><desc>bus=yes
+highway=bus_stop
+name=R.G. Kar Medical College and Hospital
+public_transport=platform</desc><link href="http://osm.org/browse/node/5311861530"/></wpt><wpt lat="22.6052471" lon="88.3840518"><name>Belgachia More</name><desc>bus=yes
+highway=bus_stop
+name=Belgachia More
+name:en=Belgachia More
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/5311861531"/></wpt><wpt lat="22.6061291" lon="88.3868673"><name>Belgachia Metro</name><desc>bus=yes
+highway=bus_stop
+name=Belgachia Metro
+name:en=Belgachia Metro
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/5311861532"/></wpt><wpt lat="22.6073875" lon="88.3909822"><name>Duttabagan</name><desc>bus=yes
+highway=bus_stop
+name=Duttabagan
+public_transport=platform</desc><link href="http://osm.org/browse/node/5311861533"/></wpt><wpt lat="22.5650825" lon="88.3397639"><name>Babu Ghat</name><desc>bus=yes
+highway=bus_stop
+name=Babu Ghat
+public_transport=platform</desc><link href="http://osm.org/browse/node/5465037942"/></wpt><wpt lat="22.5415351" lon="88.3518671"><name>Camac Street;ACJ Boss Road Crossing</name><desc>bench=yes
+bin=no
+bus=yes
+check_date:shelter=2024-10-11
+highway=bus_stop
+lit=yes
+name=Camac Street;ACJ Boss Road Crossing
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/6135361873"/></wpt><wpt lat="22.5335255" lon="88.3646541"><name>node/6135363268</name><desc>bench=yes
+bus=yes
+highway=bus_stop
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/6135363268"/></wpt><wpt lat="22.5445122" lon="88.3569168"><name>node/6135363703</name><desc>bench=yes
+bus=yes
+highway=bus_stop
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/6135363703"/></wpt><wpt lat="22.541486" lon="88.352836"><name>AC Bose Road</name><desc>bench=yes
+bin=no
+bus=yes
+check_date:shelter=2024-10-11
+highway=bus_stop
+lit=yes
+name=AC Bose Road
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/6141500246"/></wpt><wpt lat="22.5413733" lon="88.3549773"><name>AJC Bose Road, Minto Park</name><desc>bench=yes
+bin=no
+bus=yes
+check_date:shelter=2024-10-11
+highway=bus_stop
+lit=yes
+name=AJC Bose Road, Minto Park
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/6141500383"/></wpt><wpt lat="22.5388048" lon="88.3184108"><name>node/6143232249</name><desc>bench=yes
+bus=yes
+highway=bus_stop
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/6143232249"/></wpt><wpt lat="22.5565249" lon="88.3559708"><name>Marquis Street</name><desc>bus=yes
+description=bus to Khulna, Dhaka
+highway=bus_stop
+name=Marquis Street
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/6173705482"/></wpt><wpt lat="22.5752422" lon="88.3490678"><name>node/6267971287</name><desc>bus=yes
+description:ru=остановка автобуса до аэропорта
+highway=bus_stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/6267971287"/></wpt><wpt lat="22.5084089" lon="88.3204321"><name>ODRC</name><desc>bus=yes
+highway=bus_stop
+name=ODRC
+public_transport=platform</desc><link href="http://osm.org/browse/node/6378369685"/></wpt><wpt lat="22.5496586" lon="88.348759"><name>Maidan Bus Stop</name><desc>bus=yes
+highway=bus_stop
+name=Maidan Bus Stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/6469067986"/></wpt><wpt lat="22.5132412" lon="88.30236"><name>Airport mora</name><desc>bus=yes
+highway=bus_stop
+name=Airport mora
+public_transport=platform</desc><link href="http://osm.org/browse/node/6510186386"/></wpt><wpt lat="22.5082842" lon="88.3207431"><name>ODRC</name><desc>bus=yes
+highway=bus_stop
+name=ODRC
+public_transport=platform</desc><link href="http://osm.org/browse/node/6528144885"/></wpt><wpt lat="22.5133024" lon="88.3023438"><name>Airport mora</name><desc>bus=yes
+highway=bus_stop
+name=Airport mora
+public_transport=platform</desc><link href="http://osm.org/browse/node/6528146786"/></wpt><wpt lat="22.5132553" lon="88.3023394"><name>Airport More</name><desc>bus=yes
+highway=bus_stop
+name=Airport More
+public_transport=platform</desc><link href="http://osm.org/browse/node/6528149985"/></wpt><wpt lat="22.517233" lon="88.2978143"><name>Jhinjhira Bazaar</name><desc>bus=yes
+highway=bus_stop
+name=Jhinjhira Bazaar
+public_transport=platform</desc><link href="http://osm.org/browse/node/6528585885"/></wpt><wpt lat="22.4738701" lon="88.3619683"><name>Naktala</name><desc>bus=yes
+highway=bus_stop
+name=Naktala
+public_transport=platform</desc><link href="http://osm.org/browse/node/6541624085"/></wpt><wpt lat="22.5389541" lon="88.3765874"><name>Hindu Gobra Bus Stop</name><desc>bus=yes
+highway=bus_stop
+name=Hindu Gobra Bus Stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/6541660785"/></wpt><wpt lat="22.4917517" lon="88.3830872"><name>Santoshpur Lake Pally Bus Stop</name><desc>bus=yes
+highway=bus_stop
+name=Santoshpur Lake Pally Bus Stop
+network=Jadavpur to EM Bypass
+public_transport=platform</desc><link href="http://osm.org/browse/node/6791412446"/></wpt><wpt lat="22.5022005" lon="88.3617984"><name>South City Mall</name><desc>bus=yes
+highway=bus_stop
+name=South City Mall
+public_transport=stop_position</desc><link href="http://osm.org/browse/node/6956599532"/></wpt><wpt lat="22.554785" lon="88.3498536"><name>node/7053533115</name><desc>bench=yes
+bus=yes
+highway=bus_stop
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/7053533115"/></wpt><wpt lat="22.5548915" lon="88.3502179"><name>Park Street</name><desc>bus=yes
+highway=bus_stop
+name=Park Street
+public_transport=platform</desc><link href="http://osm.org/browse/node/7055897015"/></wpt><wpt lat="22.5035812" lon="88.3761437"><name>Sahid Nagar Bus Stop</name><desc>bus=yes
+highway=bus_stop
+name=Sahid Nagar Bus Stop
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/7265806835"/></wpt><wpt lat="22.5031182" lon="88.3787268"><name>Ganguli Pukur Bus Stop</name><desc>bus=yes
+highway=bus_stop
+name=Ganguli Pukur Bus Stop
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/7265847795"/></wpt><wpt lat="22.5023977" lon="88.3840299"><name>Safuipara Bus Stop</name><desc>bus=yes
+departures_board=no
+highway=bus_stop
+name=Safuipara Bus Stop
+note=Previously this place was marked as bus station,  but there was issues with it. As per defination bus station is a building so there must a way for the roads to move over the building. In reality there is no building structure in there.
+public_transport=platform</desc><link href="http://osm.org/browse/node/7266172768"/></wpt><wpt lat="22.5022427" lon="88.3845512"><name>Safuipara Bus Stop</name><desc>bus=yes
+departures_board=no
+highway=bus_stop
+name=Safuipara Bus Stop
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/7266616946"/></wpt><wpt lat="22.5026073" lon="88.3908552"><name>Shitala Mandir Bus Stop</name><desc>bus=yes
+departures_board=no
+highway=bus_stop
+name=Shitala Mandir Bus Stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/7266625751"/></wpt><wpt lat="22.543479" lon="88.2946904"><name>Ram Nagar More Bus Stop</name><desc>highway=bus_stop
+name=Ram Nagar More Bus Stop</desc><link href="http://osm.org/browse/node/8922188717"/></wpt><wpt lat="22.5840846" lon="88.3917069"><name>Kauborsthan</name><desc>bus=yes
+highway=bus_stop
+name=Kauborsthan
+name:en=Kaborsthan
+public_transport=platform</desc><link href="http://osm.org/browse/node/9566184517"/></wpt><wpt lat="22.5844244" lon="88.3916133"><name>Kaborsthan</name><desc>bus=yes
+highway=bus_stop
+name=Kaborsthan
+public_transport=platform</desc><link href="http://osm.org/browse/node/9566184518"/></wpt><wpt lat="22.5811353" lon="88.3909057"><name>Kankurgachi bus stop</name><desc>bus=yes
+highway=bus_stop
+name=Kankurgachi bus stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/9566184617"/></wpt><wpt lat="22.5900243" lon="88.3933015"><name>Hudco</name><desc>bench=yes
+bin=yes
+bus=yes
+highway=bus_stop
+lit=no
+name=Hudco
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/9567534817"/></wpt><wpt lat="22.5418017" lon="88.3869552"><name>Topsia</name><desc>bus=yes
+highway=bus_stop
+name=Topsia
+public_transport=platform</desc><link href="http://osm.org/browse/node/9910998317"/></wpt><wpt lat="22.5024104" lon="88.3182696"><name>14 No Bus Stop</name><desc>bus=yes
+highway=bus_stop
+name=14 No Bus Stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/10186087295"/></wpt><wpt lat="22.5020736" lon="88.3179935"><name>14 No Bus Stop</name><desc>bus=yes
+highway=bus_stop
+name=14 No Bus Stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/10186087296"/></wpt><wpt lat="22.5015283" lon="88.3209192"><name>Mohananda Crossing BUs Stop</name><desc>bus=yes
+highway=bus_stop
+name=Mohananda Crossing BUs Stop
+network=M14
+operator=WBTC
+public_transport=platform</desc><link href="http://osm.org/browse/node/10186118010"/></wpt><wpt lat="22.5015356" lon="88.3209069"><name>Mohananda Crossing BUs Stop</name><desc>bus=yes
+highway=bus_stop
+name=Mohananda Crossing BUs Stop
+network=M14
+operator=WBTC
+public_transport=platform</desc><link href="http://osm.org/browse/node/10186153814"/></wpt><wpt lat="22.5193054" lon="88.3784625"><name>Kasba Purono Thana</name><desc>bus=yes
+highway=bus_stop
+name=Kasba Purono Thana
+public_transport=platform</desc><link href="http://osm.org/browse/node/10241822509"/></wpt><wpt lat="22.5192474" lon="88.380664"><name>Kasba Bakultala</name><desc>bus=yes
+highway=bus_stop
+name=Kasba Bakultala
+public_transport=platform</desc><link href="http://osm.org/browse/node/10241822609"/></wpt><wpt lat="22.5679041" lon="88.3412882"><name>Babughat ferry to Howrah</name><desc>bus=yes
+highway=bus_stop
+name=Babughat ferry to Howrah
+public_transport=platform</desc><link href="http://osm.org/browse/node/10558740109"/></wpt><wpt lat="22.5419261" lon="88.3869482"><name>node/11374899618</name><desc>bus=yes
+highway=bus_stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/11374899618"/></wpt><wpt lat="22.5258568" lon="88.3661467"><name>Gariahat Bus stop</name><desc>bus=yes
+departures_board=timetable
+highway=bus_stop
+name=Gariahat Bus stop
+public_transport=platform
+shelter=yes
+tram=yes</desc><link href="http://osm.org/browse/node/11422427266"/></wpt><wpt lat="22.4718652" lon="88.3897901"><name>Patuli</name><desc>bus=yes
+highway=bus_stop
+name=Patuli
+public_transport=platform</desc><link href="http://osm.org/browse/node/11540007265"/></wpt><wpt lat="22.5396665" lon="88.3975732"><name>Science City</name><desc>bus=yes
+highway=bus_stop
+name=Science City</desc><link href="http://osm.org/browse/node/11971705716"/></wpt><wpt lat="22.5306711" lon="88.3954194"><name>Uttar Panchana Gram</name><desc>bus=yes
+highway=bus_stop
+name=Uttar Panchana Gram</desc><link href="http://osm.org/browse/node/11971705717"/></wpt><wpt lat="22.52803" lon="88.3947408"><name>Panchana Gram</name><desc>bus=yes
+highway=bus_stop
+name=Panchana Gram</desc><link href="http://osm.org/browse/node/11971705718"/></wpt><wpt lat="22.5257953" lon="88.3954006"><name>VIP Bazar</name><desc>bus=yes
+highway=bus_stop
+name=VIP Bazar</desc><link href="http://osm.org/browse/node/11971705719"/></wpt><wpt lat="22.5204312" lon="88.3985871"><name>Tagore Park</name><desc>bus=yes
+highway=bus_stop
+name=Tagore Park</desc><link href="http://osm.org/browse/node/11971705720"/></wpt><wpt lat="22.5144971" lon="88.4012827"><name>Ruby</name><desc>bus=yes
+highway=bus_stop
+name=Ruby</desc><link href="http://osm.org/browse/node/11971705721"/></wpt><wpt lat="22.5046476" lon="88.4006497"><name>Kalikapur</name><desc>bus=yes
+highway=bus_stop
+name=Kalikapur</desc><link href="http://osm.org/browse/node/11971705722"/></wpt><wpt lat="22.5009479" lon="88.3999819"><name>Singha Bari</name><desc>bus=yes
+highway=bus_stop
+name=Singha Bari</desc><link href="http://osm.org/browse/node/11971705723"/></wpt><wpt lat="22.4970103" lon="88.3988607"><name>Metro Cash &amp; Carry</name><desc>bus=yes
+highway=bus_stop
+name=Metro Cash &amp; Carry</desc><link href="http://osm.org/browse/node/11971705724"/></wpt><wpt lat="22.4946127" lon="88.397755"><name>Medica</name><desc>bus=yes
+highway=bus_stop
+name=Medica</desc><link href="http://osm.org/browse/node/11971705725"/></wpt><wpt lat="22.4921407" lon="88.396436"><name>Mukundapur</name><desc>bus=yes
+highway=bus_stop
+name=Mukundapur</desc><link href="http://osm.org/browse/node/11971705726"/></wpt><wpt lat="22.4902697" lon="88.3953832"><name>Ajoynagar</name><desc>bus=yes
+highway=bus_stop
+name=Ajoynagar</desc><link href="http://osm.org/browse/node/11971705727"/></wpt><wpt lat="22.4922795" lon="88.3923094"><name>Survey Park</name><desc>bus=yes
+highway=bus_stop
+name=Survey Park</desc><link href="http://osm.org/browse/node/11971705728"/></wpt><wpt lat="22.4938773" lon="88.3905029"><name>Jora Bridge (Santoshpur)</name><desc>bus=yes
+highway=bus_stop
+name=Jora Bridge (Santoshpur)</desc><link href="http://osm.org/browse/node/11971705729"/></wpt><wpt lat="22.4928594" lon="88.3879428"><name>Shining Residency</name><desc>bus=yes
+highway=bus_stop
+name=Shining Residency</desc><link href="http://osm.org/browse/node/11971705730"/></wpt><wpt lat="22.4917789" lon="88.3831852"><name>Santoshpur Lake Pally Bus Stop</name><desc>bus=yes
+highway=bus_stop
+name=Santoshpur Lake Pally Bus Stop</desc><link href="http://osm.org/browse/node/11971705731"/></wpt><wpt lat="22.4926921" lon="88.382009"><name>Santoshpur Modern Girls School</name><desc>bus=yes
+highway=bus_stop
+name=Santoshpur Modern Girls School</desc><link href="http://osm.org/browse/node/11971705732"/></wpt><wpt lat="22.4931109" lon="88.379709"><name>Santoshpur Bot Tala</name><desc>bus=yes
+highway=bus_stop
+name=Santoshpur Bot Tala</desc><link href="http://osm.org/browse/node/11971705733"/></wpt><wpt lat="22.4937875" lon="88.3755469"><name>Sukanata Setu</name><desc>bus=yes
+highway=bus_stop
+name=Sukanata Setu</desc><link href="http://osm.org/browse/node/11971705734"/></wpt><wpt lat="22.4915547" lon="88.3726729"><name>Sulekha</name><desc>bus=yes
+highway=bus_stop
+name=Sulekha</desc><link href="http://osm.org/browse/node/11971705735"/></wpt><wpt lat="22.4934564" lon="88.3717953"><name>KPC Hospital</name><desc>bus=yes
+highway=bus_stop
+name=KPC Hospital</desc><link href="http://osm.org/browse/node/11971705736"/></wpt><wpt lat="22.4933947" lon="88.3716591"><name>KPC Hospital</name><desc>bus=yes
+highway=bus_stop
+name=KPC Hospital
+public_transport=platform</desc><link href="http://osm.org/browse/node/11971705737"/></wpt><wpt lat="22.4913329" lon="88.3726649"><name>Sulekha</name><desc>bus=yes
+highway=bus_stop
+name=Sulekha
+public_transport=platform</desc><link href="http://osm.org/browse/node/11971705738"/></wpt><wpt lat="22.4937664" lon="88.3757293"><name>Sukanata Setu</name><desc>bus=yes
+highway=bus_stop
+name=Sukanata Setu
+public_transport=platform</desc><link href="http://osm.org/browse/node/11971705739"/></wpt><wpt lat="22.4930453" lon="88.3797151"><name>Santoshpur Bot Tala</name><desc>bus=yes
+highway=bus_stop
+name=Santoshpur Bot Tala
+public_transport=platform</desc><link href="http://osm.org/browse/node/11971705740"/></wpt><wpt lat="22.4926909" lon="88.3818448"><name>Santoshpur Modern Girls School</name><desc>bus=yes
+highway=bus_stop
+name=Santoshpur Modern Girls School
+public_transport=platform</desc><link href="http://osm.org/browse/node/11971705741"/></wpt><wpt lat="22.4927999" lon="88.3880112"><name>Shining Residency</name><desc>bus=yes
+highway=bus_stop
+name=Shining Residency
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/11971705742"/></wpt><wpt lat="22.4938532" lon="88.3899826"><name>Jora Bridge (Santoshpur)</name><desc>bus=yes
+highway=bus_stop
+name=Jora Bridge (Santoshpur)
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/11971705743"/></wpt><wpt lat="22.4922238" lon="88.3922906"><name>Survey Park</name><desc>bus=yes
+highway=bus_stop
+name=Survey Park
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/11971705744"/></wpt><wpt lat="22.489805" lon="88.3948602"><name>Ajoynagar</name><desc>bus=yes
+highway=bus_stop
+name=Ajoynagar
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/11971705745"/></wpt><wpt lat="22.4920614" lon="88.3967699"><name>Mukundapur</name><desc>bus=yes
+highway=bus_stop
+name=Mukundapur
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/11971705746"/></wpt><wpt lat="22.4944244" lon="88.3979367"><name>Medica</name><desc>bus=yes
+highway=bus_stop
+name=Medica
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/11971705747"/></wpt><wpt lat="22.4965109" lon="88.3990109"><name>Metro Cash &amp; Carry</name><desc>bus=yes
+highway=bus_stop
+name=Metro Cash &amp; Carry
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/11971705748"/></wpt><wpt lat="22.5014559" lon="88.4004673"><name>Singha Bari</name><desc>bus=yes
+highway=bus_stop
+name=Singha Bari
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/11971705749"/></wpt><wpt lat="22.5026429" lon="88.4007007"><name>Kalikapur</name><desc>bus=yes
+highway=bus_stop
+name=Kalikapur
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/11971705750"/></wpt><wpt lat="22.4840184" lon="88.3023908"><name>Bakultala</name><desc>highway=bus_stop
+name=Bakultala</desc><link href="http://osm.org/browse/node/11971705754"/></wpt><wpt lat="22.4845364" lon="88.306276"><name>Notun Para</name><desc>highway=bus_stop
+name=Notun Para</desc><link href="http://osm.org/browse/node/11971705756"/></wpt><wpt lat="22.4885965" lon="88.3138049"><name>Vivekananda College</name><desc>highway=bus_stop
+name=Vivekananda College</desc><link href="http://osm.org/browse/node/11971705758"/></wpt><wpt lat="22.4916643" lon="88.3152017"><name>Simulatala Bazar</name><desc>highway=bus_stop
+name=Simulatala Bazar</desc><link href="http://osm.org/browse/node/11971705759"/></wpt><wpt lat="22.4948629" lon="88.3166069"><name>Manton</name><desc>highway=bus_stop
+name=Manton</desc><link href="http://osm.org/browse/node/11971705760"/></wpt><wpt lat="22.4996493" lon="88.3173801"><name>Behala Notun Bajar</name><desc>highway=bus_stop
+name=Behala Notun Bajar</desc><link href="http://osm.org/browse/node/11971705761"/></wpt><wpt lat="22.5020253" lon="88.3181107"><name>14 No Bus Stop</name><desc>highway=bus_stop
+name=14 No Bus Stop</desc><link href="http://osm.org/browse/node/11971705762"/></wpt><wpt lat="22.506487" lon="88.3197631"><name>Pathak Para</name><desc>highway=bus_stop
+name=Pathak Para</desc><link href="http://osm.org/browse/node/11971705763"/></wpt><wpt lat="22.5097141" lon="88.3210166"><name>Ajanta Cinema</name><desc>highway=bus_stop
+name=Ajanta Cinema</desc><link href="http://osm.org/browse/node/11971705764"/></wpt><wpt lat="22.5090261" lon="88.3328437"><name>New Alipore Petrol Pump</name><desc>highway=bus_stop
+name=New Alipore Petrol Pump</desc><link href="http://osm.org/browse/node/11971705766"/></wpt><wpt lat="22.5167539" lon="88.3414691"><name>Keoratala Shamshan</name><desc>highway=bus_stop
+name=Keoratala Shamshan</desc><link href="http://osm.org/browse/node/11971705768"/></wpt><wpt lat="22.5169434" lon="88.346226"><name>Kalighat</name><desc>highway=bus_stop
+name=Kalighat</desc><link href="http://osm.org/browse/node/11971706969"/></wpt><wpt lat="22.5167969" lon="88.3490807"><name>Lake Market</name><desc>highway=bus_stop
+name=Lake Market</desc><link href="http://osm.org/browse/node/11971706970"/></wpt><wpt lat="22.51733" lon="88.3527346"><name>Deshapriya Park</name><desc>highway=bus_stop
+name=Deshapriya Park</desc><link href="http://osm.org/browse/node/11971706971"/></wpt><wpt lat="22.5179037" lon="88.3559583"><name>Rashbehari/Deshapriya Park</name><desc>highway=bus_stop
+name=Rashbehari/Deshapriya Park</desc><link href="http://osm.org/browse/node/11971707008"/></wpt><wpt lat="22.5212102" lon="88.3985496"><name>Tagore Park</name><desc>bus=yes
+highway=bus_stop
+name=Tagore Park
+public_transport=platform</desc><link href="http://osm.org/browse/node/11971707018"/></wpt><wpt lat="22.5282021" lon="88.395112"><name>Panchana Gram</name><desc>bus=yes
+highway=bus_stop
+name=Panchana Gram
+public_transport=platform</desc><link href="http://osm.org/browse/node/11971707019"/></wpt><wpt lat="22.5310204" lon="88.3958619"><name>Uttara Panchanna Gram</name><desc>bus=yes
+highway=bus_stop
+name=Uttara Panchanna Gram
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/11971707020"/></wpt><wpt lat="22.5416326" lon="88.3983896"><name>Bus stop</name><desc>bus=yes
+highway=bus_stop
+name=Bus stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/11971707021"/></wpt><wpt lat="22.5559109" lon="88.4121972"><name>Chingrighata (Evening)</name><desc>bus=yes
+highway=bus_stop
+name=Chingrighata (Evening)
+public_transport=platform</desc><link href="http://osm.org/browse/node/11971707023"/></wpt><wpt lat="22.552221" lon="88.4064326"><name>Metropolitan</name><desc>bus=yes
+highway=bus_stop
+name=Metropolitan
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/11971707024"/></wpt><wpt lat="22.5144128" lon="88.3929773"><name>Rajdanga</name><desc>highway=bus_stop
+name=Rajdanga</desc><link href="http://osm.org/browse/node/12076417087"/></wpt><wpt lat="22.5195628" lon="88.3825247"><name>KMC Pumping Station</name><desc>highway=bus_stop
+name=KMC Pumping Station</desc><link href="http://osm.org/browse/node/12076417088"/></wpt><wpt lat="22.5193225" lon="88.3807772"><name>Kasba Bakultala</name><desc>bus=yes
+highway=bus_stop
+name=Kasba Bakultala
+public_transport=platform</desc><link href="http://osm.org/browse/node/12076417089"/></wpt><wpt lat="22.5193547" lon="88.3785711"><name>Kasba Purono Thana</name><desc>bus=yes
+highway=bus_stop
+name=Kasba Purono Thana
+public_transport=platform</desc><link href="http://osm.org/browse/node/12076417090"/></wpt><wpt lat="22.5198837" lon="88.3754879"><name>Kasba Old Police Station</name><desc>bus=yes
+highway=bus_stop
+name=Kasba Old Police Station
+name:bn=কসবা পুরোনো থানা
+name:en=Kasba Old Police Station
+public_transport=platform</desc><link href="http://osm.org/browse/node/12076417091"/></wpt><wpt lat="22.5189074" lon="88.360599"><name>Hindustan Park</name><desc>highway=bus_stop
+name=Hindustan Park</desc><link href="http://osm.org/browse/node/12076417092"/></wpt><wpt lat="22.5180303" lon="88.3559909"><name>Rashbehari/Deshapriya Park</name><desc>highway=bus_stop
+name=Rashbehari/Deshapriya Park</desc><link href="http://osm.org/browse/node/12076417093"/></wpt><wpt lat="22.5175893" lon="88.3529681"><name>Deshapriya Park</name><desc>highway=bus_stop
+name=Deshapriya Park</desc><link href="http://osm.org/browse/node/12076417094"/></wpt><wpt lat="22.5169377" lon="88.3490843"><name>Lake Market</name><desc>highway=bus_stop
+name=Lake Market</desc><link href="http://osm.org/browse/node/12076417095"/></wpt><wpt lat="22.5170566" lon="88.3462089"><name>Kalighat</name><desc>highway=bus_stop
+name=Kalighat</desc><link href="http://osm.org/browse/node/12076417096"/></wpt><wpt lat="22.5168955" lon="88.3414721"><name>Keoratala Shamshan</name><desc>highway=bus_stop
+name=Keoratala Shamshan</desc><link href="http://osm.org/browse/node/12076417097"/></wpt><wpt lat="22.517396" lon="88.3374435"><name>Chetla</name><desc>highway=bus_stop
+name=Chetla</desc><link href="http://osm.org/browse/node/12076417098"/></wpt><wpt lat="22.5182224" lon="88.3333933"><name>Alipore Chetla X-ing</name><desc>highway=bus_stop
+name=Alipore Chetla X-ing</desc><link href="http://osm.org/browse/node/12076417099"/></wpt><wpt lat="22.5122596" lon="88.3295122"><name>Bankim Mukherjee Sarani/Triangular Park</name><desc>highway=bus_stop
+name=Bankim Mukherjee Sarani/Triangular Park</desc><link href="http://osm.org/browse/node/12076417100"/></wpt><wpt lat="22.5132458" lon="88.3225545"><name>Taratalla</name><desc>bus=yes
+highway=bus_stop
+name=Taratalla
+public_transport=platform</desc><link href="http://osm.org/browse/node/12076417101"/></wpt><wpt lat="22.518127" lon="88.3333504"><name>Alipore Chetla X-ing</name><desc>highway=bus_stop
+name=Alipore Chetla X-ing</desc><link href="http://osm.org/browse/node/12076417102"/></wpt><wpt lat="22.5122493" lon="88.3289705"><name>Bankim Mukherjee Sarani/Triangular Park</name><desc>highway=bus_stop
+name=Bankim Mukherjee Sarani/Triangular Park</desc><link href="http://osm.org/browse/node/12076417104"/></wpt><wpt lat="22.5172961" lon="88.3374306"><name>Chetla</name><desc>highway=bus_stop
+name=Chetla</desc><link href="http://osm.org/browse/node/12076417105"/></wpt><wpt lat="22.5194057" lon="88.3824549"><name>KMC Pumping Station</name><desc>highway=bus_stop
+name=KMC Pumping Station</desc><link href="http://osm.org/browse/node/12076417106"/></wpt><wpt lat="22.5143239" lon="88.3926411"><name>Rajdanga</name><desc>highway=bus_stop
+name=Rajdanga</desc><link href="http://osm.org/browse/node/12076417107"/></wpt><wpt lat="22.5725264" lon="88.3678721"><name>Purabi</name><desc>bus=yes
+departures_board=no
+highway=bus_stop
+name=Purabi
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/12451374492"/></wpt><wpt lat="22.5733983" lon="88.3673212"><name>Amherst Street</name><desc>bus=yes
+departures_board=no
+highway=bus_stop
+name=Amherst Street
+public_transport=platform
+shelter=no</desc><link href="http://osm.org/browse/node/12451374493"/></wpt><wpt lat="22.5755758" lon="88.3657168"><name>College Square</name><desc>bus=yes
+highway=bus_stop
+name=College Square
+public_transport=platform</desc><link href="http://osm.org/browse/node/12451374494"/></wpt><wpt lat="22.5770797" lon="88.3641391"><name>College Street</name><desc>bus=yes
+highway=bus_stop
+name=College Street
+public_transport=platform</desc><link href="http://osm.org/browse/node/12451374495"/></wpt><wpt lat="22.5770193" lon="88.3641149"><name>College Street</name><desc>bus=yes
+highway=bus_stop
+name=College Street
+public_transport=platform</desc><link href="http://osm.org/browse/node/12451374496"/></wpt><wpt lat="22.5771898" lon="88.3639452"><name>College Street</name><desc>bus=yes
+highway=bus_stop
+name=College Street
+public_transport=platform</desc><link href="http://osm.org/browse/node/12451374497"/></wpt><wpt lat="22.577143" lon="88.3639119"><name>College Street</name><desc>bus=yes
+highway=bus_stop
+name=College Street
+public_transport=platform</desc><link href="http://osm.org/browse/node/12451374498"/></wpt><wpt lat="22.5726043" lon="88.3669606"><name>Surya Sen Crossing</name><desc>bus=yes
+highway=bus_stop
+name=Surya Sen Crossing
+public_transport=platform</desc><link href="http://osm.org/browse/node/12492485023"/></wpt><wpt lat="22.5699816" lon="88.3692835"><name>Chabbigarh</name><desc>bus=yes
+highway=bus_stop
+name=Chabbigarh
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761560746"/></wpt><wpt lat="22.5700193" lon="88.3694101"><name>Sealdah</name><desc>bus=yes
+highway=bus_stop
+name=Sealdah
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761560747"/></wpt><wpt lat="22.5655457" lon="88.3696752"><name>Sealdah Court</name><desc>alt_name=Sealdah Station
+bench=yes
+bin=no
+bus=yes
+highway=bus_stop
+lit=yes
+name=Sealdah Court
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/12761560748"/></wpt><wpt lat="22.5652881" lon="88.3701979"><name>Sealdah Station</name><desc>bench=no
+bin=no
+bus=yes
+highway=bus_stop
+lit=yes
+name=Sealdah Station
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/12761560749"/></wpt><wpt lat="22.5658607" lon="88.377369"><name>Barafkal</name><desc>bus=yes
+highway=bus_stop
+name=Barafkal
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761560750"/></wpt><wpt lat="22.5660552" lon="88.3799993"><name>Sales Tax</name><desc>bus=yes
+highway=bus_stop
+name=Sales Tax
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761560751"/></wpt><wpt lat="22.5657302" lon="88.3817214"><name>Beleghata Khalpar</name><desc>bus=yes
+highway=bus_stop
+name=Beleghata Khalpar
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761560752"/></wpt><wpt lat="22.5656364" lon="88.3825371"><name>Beleghata Khalpar</name><desc>bench=yes
+bin=no
+bus=yes
+highway=bus_stop
+lit=yes
+name=Beleghata Khalpar
+public_transport=platform
+shelter=yes</desc><link href="http://osm.org/browse/node/12761560753"/></wpt><wpt lat="22.5648542" lon="88.3861894"><name>Uriyabagan</name><desc>bus=yes
+highway=bus_stop
+name=Uriyabagan
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761560754"/></wpt><wpt lat="22.5643166" lon="88.3888543"><name>Alochaya</name><desc>bus=yes
+highway=bus_stop
+name=Alochaya
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761560755"/></wpt><wpt lat="22.5641035" lon="88.3898999"><name>Deshbandhu</name><desc>bus=yes
+highway=bus_stop
+name=Deshbandhu
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761637266"/></wpt><wpt lat="22.5636583" lon="88.3921864"><name>Kalimuddin</name><desc>bus=yes
+highway=bus_stop
+name=Kalimuddin
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761637267"/></wpt><wpt lat="22.5662785" lon="88.396563"><name>ID Hospital</name><desc>bus=yes
+highway=bus_stop
+name=ID Hospital
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761637272"/></wpt><wpt lat="22.5662652" lon="88.3966554"><name>ID Hospital</name><desc>bus=yes
+highway=bus_stop
+name=ID Hospital
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761637273"/></wpt><wpt lat="22.5709336" lon="88.4000311"><name>Orient</name><desc>bus=yes
+highway=bus_stop
+name=Orient
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761637274"/></wpt><wpt lat="22.5708567" lon="88.4011492"><name>Swabhumi</name><desc>bus=yes
+highway=bus_stop
+name=Swabhumi
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761637275"/></wpt><wpt lat="22.5630568" lon="88.3963252"><name>CIT More</name><desc>bus=yes
+highway=bus_stop
+name=CIT More
+public_transport=platform</desc><link href="http://osm.org/browse/node/12761665970"/></wpt><wpt lat="22.4776682" lon="88.3761913"><name>Ganguly Bagan Bus Stop</name><desc>bus=yes
+highway=bus_stop
+name=Ganguly Bagan Bus Stop
+public_transport=platform</desc><link href="http://osm.org/browse/node/12778278593"/></wpt></gpx>

@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="overpass-turbo"><metadata><desc>Filtered OSM data converted to GPX by overpass turbo</desc><copyright author="The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."/><time>2025-09-21T13:40:35Z</time></metadata><wpt lat="22.4734404" lon="88.3608976"><name>Masterda Surya Sen</name><desc>alt_name=Bansdroni
+building=yes
+internet_access=no
+layer=1
+name=Masterda Surya Sen
+name:bn=মাস্টারদা সূর্য সেন
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wheelchair=limited
+wikidata=Q6785356
+wikipedia=en:Masterda Surya Sen metro station</desc><link href="http://osm.org/browse/way/469357608"/></wpt><wpt lat="22.4720645" lon="88.3979877"><name>Kavi Subhash</name><desc>building=train_station
+name=Kavi Subhash
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q6379216
+wikipedia=en:Kavi Subhash metro station</desc><link href="http://osm.org/browse/way/535333502"/></wpt><wpt lat="22.4694673" lon="88.3700116"><name>Gitanjali</name><desc>building=yes
+layer=1
+name=Gitanjali
+name:bn=গীতাঞ্জলি
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q5565052
+wikipedia=en:Gitanjali metro station</desc><link href="http://osm.org/browse/way/535333554"/></wpt><wpt lat="22.5724857" lon="88.3587427"><name>Central</name><desc>name=Central
+name:bn=সেন্ট্রাল
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q5061425
+wikipedia=en:Central metro station (Kolkata)</desc><link href="http://osm.org/browse/node/5421528426"/></wpt><wpt lat="22.5551591" lon="88.3501171"><name>Park Street</name><desc>name=Park Street
+name:bn=পার্ক স্ট্রীট
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q7138060
+wikipedia=en:Park Street metro station (Kolkata)</desc><link href="http://osm.org/browse/node/5421528503"/></wpt><wpt lat="22.4721697" lon="88.397961"><name>Kavi Subhash (Blue Line)</name><desc>alt_name=New Garia
+name=Kavi Subhash (Blue Line)
+name:bn=কবি সুভাষ
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q6379216
+wikipedia=en:Kavi Subhash metro station</desc><link href="http://osm.org/browse/node/5421533467"/></wpt><wpt lat="22.4809928" lon="88.3460002"><name>Netaji</name><desc>name=Netaji
+name:bn=নেতাজি
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q6998636
+wikipedia=en:Netaji metro station</desc><link href="http://osm.org/browse/node/5421533468"/></wpt><wpt lat="22.4947692" lon="88.3450879"><name>Mahanayak Uttam Kumar</name><desc>name=Mahanayak Uttam Kumar
+name:bn=মহানায়ক উত্তমকুমার
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q6733119
+wikipedia=en:Mahanayak Uttam Kumar metro station</desc><link href="http://osm.org/browse/node/5421536497"/></wpt><wpt lat="22.5072216" lon="88.3454936"><name>Rabindra Sarobar</name><desc>name=Rabindra Sarobar
+name:bn=রবীন্দ্র সরোবর
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q7278757
+wikipedia=en:Rabindra Sarobar metro station</desc><link href="http://osm.org/browse/node/5421538365"/></wpt><wpt lat="22.5168752" lon="88.3458448"><name>Kalighat</name><desc>name=Kalighat
+name:bn=কালীঘাট
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q15041932
+wikipedia=en:Kalighat metro station</desc><link href="http://osm.org/browse/node/5421539684"/></wpt><wpt lat="22.5241535" lon="88.3464729"><name>Jatin Das Park</name><desc>name=Jatin Das Park
+name:bn=যতীন দাস পার্ক
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q6164578
+wikipedia=en:Jatin Das Park metro station</desc><link href="http://osm.org/browse/node/5421540159"/></wpt><wpt lat="22.5331821" lon="88.3459269"><name>Netaji Bhavan</name><desc>name=Netaji Bhavan
+name:bn=নেতাজি ভবন
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wheelchair=limited
+wikidata=Q6998599
+wikipedia=en:Netaji Bhavan metro station</desc><link href="http://osm.org/browse/node/5421541284"/></wpt><wpt lat="22.5414899" lon="88.3473493"><name>Rabindra Sadan</name><desc>name=Rabindra Sadan
+name:bn=রবীন্দ্র সদন
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q7278756
+wikipedia=en:Rabindra Sadan metro station</desc><link href="http://osm.org/browse/node/5421542551"/></wpt><wpt lat="22.5494672" lon="88.3487883"><name>Maidan</name><desc>name=Maidan
+name:bn=ময়দান
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q6735340
+wikipedia=en:Maidan metro station</desc><link href="http://osm.org/browse/node/5421543288"/></wpt><wpt lat="22.5670118" lon="88.3541581"><name>Chandni Chowk</name><desc>name=Chandni Chowk
+name:bn=চাঁদনি চক
+network=Kolkata Metro
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q5071229
+wikipedia=en:Chandni Chowk metro station (Kolkata)</desc><link href="http://osm.org/browse/node/5421543316"/></wpt><wpt lat="22.5636143" lon="88.3512099"><name>Esplanade (Line 1)</name><desc>name=Esplanade (Line 1)
+name:bn=এসপ্ল্যানেড
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q5399030
+wikipedia=en:Esplanade metro station</desc><link href="http://osm.org/browse/node/5421545051"/></wpt><wpt lat="22.5809206" lon="88.3613271"><name>Mahatma Gandhi Road</name><desc>name=Mahatma Gandhi Road
+name:bn=মহাত্মা গান্ধী রোড
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q6733523
+wikipedia=en:Mahatma Gandhi Road metro station (Kolkata)</desc><link href="http://osm.org/browse/node/5421545390"/></wpt><wpt lat="22.5871445" lon="88.3629415"><name>Girish Park</name><desc>name=Girish Park
+name:bn=গিরিশ পার্ক
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q5564298
+wikipedia=en:Girish Park metro station</desc><link href="http://osm.org/browse/node/5421546475"/></wpt><wpt lat="22.595881" lon="88.3651996"><name>Shobhabazar Sutanuti</name><desc>name=Shobhabazar Sutanuti
+name:bn=শোভাবাজার সুতানুটি
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q7499796
+wikipedia=en:Sovabazar Sutanuti metro station</desc><link href="http://osm.org/browse/node/5421546940"/></wpt><wpt lat="22.601335" lon="88.3724974"><name>Shyambazar</name><desc>name=Shyambazar
+name:bn=শ্যামবাজার
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q7505976
+wikipedia=en:Shyambazar metro station</desc><link href="http://osm.org/browse/node/5421546974"/></wpt><wpt lat="22.6059241" lon="88.3863913"><name>Belgachia</name><desc>name=Belgachia
+name:bn=বেলগাছিয়া
+network=Kolkata Metro
+network:wikidata=Q1048849
+official_name=Theism Belgachia
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q4882396
+wikipedia=en:Belgachia metro station</desc><link href="http://osm.org/browse/node/5421548359"/></wpt><wpt lat="22.5800666" lon="88.4012962"><name>Bengal Chemical</name><desc>name=Bengal Chemical
+name:bn=বেঙ্গল কেমিক্যালস
+network=Kolkata Metro
+network:wikidata=Q1048849
+public_transport=station
+railway=station
+ref=BCSD
+station=subway
+subway=yes
+wikidata=Q63256245
+wikipedia=en:Bengal Chemical metro station</desc><link href="http://osm.org/browse/node/7976140066"/></wpt><wpt lat="22.5731115" lon="88.4030891"><name>Salt Lake Stadium</name><desc>name=Salt Lake Stadium
+name:bn=সল্ট লেক স্টেডিয়াম
+network=Kolkata Metro
+network:wikidata=Q1048849
+public_transport=station
+railway=station
+ref=SSSA
+station=subway
+subway=yes
+wikidata=Q65090392
+wikipedia=en:Salt Lake Stadium metro station</desc><link href="http://osm.org/browse/node/7976140069"/></wpt><wpt lat="22.5721268" lon="88.3902408"><name>Phoolbagan</name><desc>name=Phoolbagan
+name:bn=ফুলবাগান
+network=Kolkata Metro
+network:wikidata=Q1048849
+public_transport=station
+railway=station
+ref=PBGB
+station=subway
+subway=yes
+wikidata=Q30632551
+wikipedia=en:Phoolbagan metro station</desc><link href="http://osm.org/browse/node/7976140072"/></wpt><wpt lat="22.4987585" lon="88.3173872"><name>Behala Bazar</name><desc>name=Behala Bazar
+name:bn=বেহালা বাজার
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q84996197
+wikipedia=en:Behala Bazar metro station</desc><link href="http://osm.org/browse/node/9321290815"/></wpt><wpt lat="22.4873548" lon="88.3133794"><name>Behala Chowrasta</name><desc>name=Behala Chowrasta
+name:bn=বেহালা চৌরাস্তা
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q85273870
+wikipedia=en:Behala Chowrasta metro station</desc><link href="http://osm.org/browse/node/9321292345"/></wpt><wpt lat="22.5666059" lon="88.3697815"><name>Sealdah</name><desc>name=Sealdah
+name:bn=শিয়ালদহ মেট্রো স্টেশন
+network=Kolkata Metro
+network:wikidata=Q1048849
+public_transport=station
+railway=station
+ref=SDHM
+station=subway
+subway=yes
+wikidata=Q30278708
+wikipedia=en:Sealdah metro station</desc><link href="http://osm.org/browse/node/9884790401"/></wpt><wpt lat="22.4643677" lon="88.3075322"><name>Thakurpukur</name><desc>name=Thakurpukur
+name:bn=ঠাকুরপুকুর
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q30634511
+wikipedia=en:Thakurpukur metro station</desc><link href="http://osm.org/browse/node/10296539469"/></wpt><wpt lat="22.4748533" lon="88.3099593"><name>Sakher Bazar</name><desc>name=Sakher Bazar
+name:bn=সখের বাজার
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q84716021
+wikipedia=en:Sakher Bazar metro station</desc><link href="http://osm.org/browse/node/10296539474"/></wpt><wpt lat="22.5076863" lon="88.3203842"><name>Taratala</name><desc>name=Taratala
+name:bn=তারাতলা
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q85069094
+wikipedia=bn:তারাতলা মেট্রো স্টেশন</desc><link href="http://osm.org/browse/node/10296539476"/></wpt><wpt lat="22.5148514" lon="88.4014276"><name>Hemanta Mukhopadhyay</name><desc>name=Hemanta Mukhopadhyay
+name:bn=হেমন্ত মুখোপাধ্যায়
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q30632588
+wikipedia=en:Hemanta Mukhopadhyay metro station</desc><link href="http://osm.org/browse/node/11447425091"/></wpt><wpt lat="22.5053017" lon="88.4009957"><name>Kavi Sukanta</name><desc>alt_name=Kalikapur
+name=Kavi Sukanta
+name:bn=কবি সুকান্ত
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q30632590
+wikipedia=en:Kavi Sukanta metro station</desc><link href="http://osm.org/browse/node/11447425092"/></wpt><wpt lat="22.4956263" lon="88.398449"><name>Jyotirindra Nandi</name><desc>alt_name=Mukundapur
+name=Jyotirindra Nandi
+name:bn=জ্যোতিরিন্দ্র নন্দী
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q65090385
+wikipedia=en:Jyotirindra Nandi metro station</desc><link href="http://osm.org/browse/node/11447425095"/></wpt><wpt lat="22.4846775" lon="88.3926447"><name>Satyajit Ray</name><desc>name=Satyajit Ray
+name:bn=সত্যজিৎ রায়
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q30632540
+wikipedia=en:Satyajit Ray metro station</desc><link href="http://osm.org/browse/node/11447425096"/></wpt><wpt lat="22.5720777" lon="88.3505275"><name>Mahakaran</name><desc>alt_name=New Mahakaran
+name=Mahakaran
+name:bn=মহাকরণ
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+ref=MKNA
+station=subway
+subway=yes
+wikidata=Q30632550
+wikipedia=bn:মহাকরণ মেট্রো স্টেশন</desc><link href="http://osm.org/browse/node/11699268223"/></wpt><wpt lat="22.5191466" lon="88.3236555"><name>Majerhat</name><desc>name=Majerhat
+name:bn=মাঝেরহাট
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q85214864
+wikipedia=en:Majerhat metro station</desc><link href="http://osm.org/browse/node/11699268226"/></wpt><wpt lat="22.5641292" lon="88.3502752"><name>Esplanade (Line 2)</name><desc>name=Esplanade (Line 2)
+name:bn=এসপ্ল্যানেড
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+ref=KESP
+station=subway
+subway=yes
+wikidata=Q5399030
+wikipedia=en:Esplanade metro station</desc><link href="http://osm.org/browse/node/11703282685"/></wpt><wpt lat="22.5507084" lon="88.4039852"><name>Beleghata</name><desc>name=Beleghata
+name:bn=বেলেঘাটা
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q109968614
+wikipedia=en:Beleghata metro station</desc><link href="http://osm.org/browse/node/13088458999"/></wpt><wpt lat="22.5438072" lon="88.3992762"><name>Barun Sengupta</name><desc>alt_name=Science City
+name=Barun Sengupta
+name:bn=বরুণ সেনগুপ্ত
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q30632591
+wikipedia=en:Barun Sengupta metro station</desc><link href="http://osm.org/browse/node/13088485701"/></wpt><wpt lat="22.5329995" lon="88.3964191"><name>Ritwik Ghatak</name><desc>alt_name=Bantala Road
+name=Ritwik Ghatak
+name:bn=ঋত্বিক ঘটক
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q109524252
+wikipedia=en:Ritwik Ghatak metro station</desc><link href="http://osm.org/browse/node/13088485704"/></wpt><wpt lat="22.5246847" lon="88.3962331"><name>VIP Bazar</name><desc>name=VIP Bazar
+name:bn=ভি আই পি বাজার
+network=Kolkata Metro
+network:wikidata=Q1048849
+operator=Metro Railway, Kolkata
+public_transport=station
+railway=station
+station=subway
+subway=yes
+wikidata=Q30632589
+wikipedia=en:VIP Bazar metro station</desc><link href="http://osm.org/browse/node/13088485707"/></wpt></gpx>

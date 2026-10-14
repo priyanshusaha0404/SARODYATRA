@@ -1,0 +1,82 @@
+{
+  "year": 2026,
+  "note": "Dates follow Metro Railway Kolkata's Puja 2026 timetable (announced 8 Oct 2026): Panchami 15, Shashthi 16, Saptami–Navami 17–20 Oct (Navami runs over two days), Bijoya Dashami 21 Oct. Some panchangs differ by a day — edit here if yours does.",
+  "days": [
+    {
+      "key": "Mahalaya",
+      "bn": "মহালয়া",
+      "date": "2026-10-10",
+      "factor": 0.25
+    },
+    {
+      "key": "Panchami",
+      "bn": "পঞ্চমী",
+      "date": "2026-10-15",
+      "factor": 0.45
+    },
+    {
+      "key": "Shashthi",
+      "bn": "ষষ্ঠী",
+      "date": "2026-10-16",
+      "factor": 0.65
+    },
+    {
+      "key": "Saptami",
+      "bn": "সপ্তমী",
+      "date": "2026-10-17",
+      "factor": 0.85
+    },
+    {
+      "key": "Ashtami",
+      "bn": "অষ্টমী",
+      "date": "2026-10-18",
+      "factor": 1.0
+    },
+    {
+      "key": "Navami",
+      "bn": "নবমী",
+      "date": "2026-10-19",
+      "factor": 0.95,
+      "extra_dates": [
+        "2026-10-20"
+      ]
+    },
+    {
+      "key": "Dashami",
+      "bn": "দশমী",
+      "date": "2026-10-21",
+      "factor": 0.4
+    }
+  ],
+  "hour_curve": [
+    0.78,
+    0.66,
+    0.52,
+    0.38,
+    0.24,
+    0.14,
+    0.12,
+    0.14,
+    0.2,
+    0.24,
+    0.27,
+    0.3,
+    0.31,
+    0.31,
+    0.33,
+    0.4,
+    0.52,
+    0.64,
+    0.77,
+    0.89,
+    0.97,
+    1.0,
+    1.0,
+    0.92
+  ],
+  "closure_days": [
+    "Saptami",
+    "Ashtami",
+    "Navami"
+  ]
+}

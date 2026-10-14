@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StyledLayerDescriptor version="1.0.0" xmlns="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd">
+<NamedLayer><Name>pujox_bus</Name><UserStyle><Title>Bus corridors</Title><FeatureTypeStyle>
+ <Rule><Name>bus</Name><Title>Bus corridor (roads with bus stops)</Title><LineSymbolizer><Stroke><CssParameter name="stroke">#FFFFFF</CssParameter><CssParameter name="stroke-width">6</CssParameter><CssParameter name="stroke-linecap">round</CssParameter><CssParameter name="stroke-opacity">0.8</CssParameter></Stroke></LineSymbolizer><LineSymbolizer><Stroke><CssParameter name="stroke">#0E7C86</CssParameter><CssParameter name="stroke-width">3.5</CssParameter><CssParameter name="stroke-linecap">round</CssParameter><CssParameter name="stroke-dasharray">10 5</CssParameter></Stroke></LineSymbolizer></Rule>
+</FeatureTypeStyle></UserStyle></NamedLayer></StyledLayerDescriptor>

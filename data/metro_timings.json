@@ -1,0 +1,281 @@
+{
+ "source": "Metro Railway Kolkata timetables (regular: Blue/Green from 27 Jul 2026; Purple/Yellow/Orange as published 2025–26) and the Puja 2026 special timetable announced 8 Oct 2026.",
+ "lines": {
+  "Blue": {
+   "first": "06:00",
+   "last": "22:30",
+   "sunday_first": "09:00",
+   "sunday_last": "22:30",
+   "quality": "official",
+   "note": "From 27 Jul 2026: 06:00–22:30 Mon–Sat, Sundays from 09:00.",
+   "color": "#1F6FD1",
+   "label": "Blue Line (Dakshineswar – Kavi Subhash)",
+   "code": "Line 1",
+   "stations": [
+    "Dakshineswar",
+    "Baranagar",
+    "Noapara",
+    "Dum Dum",
+    "Belgachia",
+    "Shyambazar",
+    "Shobhabazar Sutanuti",
+    "Girish Park",
+    "Mahatma Gandhi Road",
+    "Central",
+    "Chandni Chowk",
+    "Esplanade",
+    "Park Street",
+    "Maidan",
+    "Rabindra Sadan",
+    "Netaji Bhavan",
+    "Jatin Das Park",
+    "Kalighat",
+    "Rabindra Sarobar",
+    "Mahanayak Uttam Kumar",
+    "Netaji",
+    "Masterda Surya Sen",
+    "Gitanjali",
+    "Kavi Nazrul",
+    "Shahid Khudiram",
+    "Kavi Subhash"
+   ]
+  },
+  "Green": {
+   "first": "06:00",
+   "last": "22:30",
+   "sunday_first": "09:00",
+   "sunday_last": "22:30",
+   "quality": "official",
+   "note": "From 27 Jul 2026: 06:00–22:30 Mon–Sat, Sundays from 09:00.",
+   "color": "#14A44D",
+   "label": "Green Line (Howrah Maidan – Salt Lake Sector V)",
+   "code": "Line 2",
+   "stations": [
+    "Howrah Maidan",
+    "Howrah",
+    "Mahakaran",
+    "Esplanade",
+    "Sealdah",
+    "Phoolbagan",
+    "Salt Lake Stadium",
+    "Bengal Chemical",
+    "City Centre",
+    "Central Park",
+    "Karunamoyee",
+    "Salt Lake Sector V"
+   ]
+  },
+  "Purple": {
+   "first": "06:40",
+   "last": "21:26",
+   "sunday_first": null,
+   "sunday_last": null,
+   "quality": "official",
+   "note": "Mon–Fri 06:40–21:26 (Joka 06:40→, Majerhat last 21:26), Sat 13:25–20:32, no Sunday service. Every ~21 min.",
+   "color": "#8E44C9",
+   "label": "Purple Line (Joka – Majerhat)",
+   "code": "Line 3",
+   "stations": [
+    "Joka",
+    "Thakurpukur",
+    "Sakher Bazar",
+    "Behala Chowrasta",
+    "Behala Bazar",
+    "Taratala",
+    "Majerhat"
+   ],
+   "saturday": {
+    "first": "13:25",
+    "last": "20:32"
+   },
+   "sunday": {
+    "closed": true,
+    "note": "No Sunday service"
+   }
+  },
+  "Yellow": {
+   "first": "07:18",
+   "last": "21:30",
+   "sunday_first": "09:18",
+   "sunday_last": "21:30",
+   "quality": "official",
+   "note": "07:18–21:30 (Sundays from 09:18). Every 18–35 min.",
+   "color": "#E8B500",
+   "label": "Yellow Line (Noapara – Jai Hind Bimanbandar)",
+   "code": "Line 4",
+   "stations": [
+    "Noapara",
+    "Dum Dum Cantonment",
+    "Jessore Road",
+    "Jai Hind Bimanbandar"
+   ]
+  },
+  "Orange": {
+   "first": "08:00",
+   "last": "20:05",
+   "sunday_first": null,
+   "sunday_last": null,
+   "quality": "official",
+   "note": "Mon–Fri 08:00–20:05 every 25 min; no Saturday/Sunday service.",
+   "color": "#F07F1E",
+   "label": "Orange Line (Kavi Subhash – Beleghata)",
+   "code": "Line 6",
+   "stations": [
+    "Kavi Subhash",
+    "Satyajit Ray",
+    "Jyotirindra Nandi",
+    "Kavi Sukanta",
+    "Hemanta Mukhopadhyay",
+    "VIP Bazar",
+    "Ritwik Ghatak",
+    "Barun Sengupta",
+    "Beleghata"
+   ],
+   "saturday": {
+    "closed": true,
+    "note": "No weekend service"
+   },
+   "sunday": {
+    "closed": true,
+    "note": "No weekend service"
+   }
+  }
+ },
+ "puja_special": null,
+ "puja_special_help": "When Metro announces the Puja overnight schedule, set e.g. {\"Blue\": {\"last\": \"02:30\"}, \"Green\": {\"last\": \"00:30\"}} here.",
+ "avg_min_per_station": {
+  "Blue": 2.2,
+  "Green": 2.4,
+  "Purple": 2.6,
+  "Yellow": 3.0,
+  "Orange": 2.8
+ },
+ "interchange_min": 6,
+ "avg_wait_min": {
+  "Blue": 4,
+  "Green": 5,
+  "Purple": 11,
+  "Yellow": 12,
+  "Orange": 13
+ },
+ "puja_special_by_date": {
+  "2026-10-15": {
+   "Blue": {
+    "first": "06:00",
+    "last": "22:50",
+    "quality": "official",
+    "note": "Puja special (Metro Railway Kolkata Puja timetable, announced 8 Oct 2026): 06:00–22:50, short trips till 23:00"
+   },
+   "Green": {
+    "first": "06:00",
+    "last": "23:00",
+    "quality": "official",
+    "note": "Puja special (Metro Railway Kolkata Puja timetable, announced 8 Oct 2026): 06:00–23:00"
+   }
+  },
+  "2026-10-16": {
+   "Blue": {
+    "first": "06:00",
+    "last": "22:50",
+    "quality": "official",
+    "note": "Puja special (Metro Railway Kolkata Puja timetable, announced 8 Oct 2026): 06:00–22:50, short trips till 23:00"
+   },
+   "Green": {
+    "first": "06:00",
+    "last": "23:00",
+    "quality": "official",
+    "note": "Puja special (Metro Railway Kolkata Puja timetable, announced 8 Oct 2026): 06:00–23:00"
+   }
+  },
+  "2026-10-17": {
+   "Blue": {
+    "first": "13:00",
+    "last": "03:48",
+    "quality": "official",
+    "note": "Puja night service (Metro Railway Kolkata Puja timetable, announced 8 Oct 2026): 13:00–03:48, short trips till 04:00"
+   },
+   "Green": {
+    "first": "13:30",
+    "last": "03:59",
+    "quality": "official",
+    "note": "Puja night service (Metro Railway Kolkata Puja timetable, announced 8 Oct 2026): 13:30–03:59"
+   },
+   "Orange": {
+    "closed": true,
+    "quality": "official",
+    "note": "Closed 17–21 Oct for Puja (Metro Railway notice)"
+   }
+  },
+  "2026-10-18": {
+   "Blue": {
+    "first": "13:00",
+    "last": "03:48",
+    "quality": "official",
+    "note": "Puja night service (Metro Railway Kolkata Puja timetable, announced 8 Oct 2026): 13:00–03:48, short trips till 04:00"
+   },
+   "Green": {
+    "first": "13:30",
+    "last": "03:59",
+    "quality": "official",
+    "note": "Puja night service (Metro Railway Kolkata Puja timetable, announced 8 Oct 2026): 13:30–03:59"
+   },
+   "Orange": {
+    "closed": true,
+    "quality": "official",
+    "note": "Closed 17–21 Oct for Puja (Metro Railway notice)"
+   }
+  },
+  "2026-10-19": {
+   "Blue": {
+    "first": "13:00",
+    "last": "03:48",
+    "quality": "official",
+    "note": "Puja night service (Metro Railway Kolkata Puja timetable, announced 8 Oct 2026): 13:00–03:48, short trips till 04:00"
+   },
+   "Green": {
+    "first": "13:30",
+    "last": "03:59",
+    "quality": "official",
+    "note": "Puja night service (Metro Railway Kolkata Puja timetable, announced 8 Oct 2026): 13:30–03:59"
+   },
+   "Orange": {
+    "closed": true,
+    "quality": "official",
+    "note": "Closed 17–21 Oct for Puja (Metro Railway notice)"
+   }
+  },
+  "2026-10-20": {
+   "Blue": {
+    "first": "13:00",
+    "last": "03:48",
+    "quality": "official",
+    "note": "Puja night service (Metro Railway Kolkata Puja timetable, announced 8 Oct 2026): 13:00–03:48, short trips till 04:00"
+   },
+   "Green": {
+    "first": "13:30",
+    "last": "03:59",
+    "quality": "official",
+    "note": "Puja night service (Metro Railway Kolkata Puja timetable, announced 8 Oct 2026): 13:30–03:59"
+   },
+   "Orange": {
+    "closed": true,
+    "quality": "official",
+    "note": "Closed 17–21 Oct for Puja (Metro Railway notice)"
+   }
+  },
+  "2026-10-21": {
+   "Blue": {
+    "first": "13:00",
+    "last": "22:20",
+    "quality": "official",
+    "note": "Dashami (Metro Railway Kolkata Puja timetable, announced 8 Oct 2026): 13:00–22:20, short trips till 22:30"
+   },
+   "Orange": {
+    "closed": true,
+    "quality": "official",
+    "note": "Closed 17–21 Oct for Puja (Metro Railway notice)"
+   }
+  }
+ },
+ "puja_special_by_date_help": "Day-by-day overrides keyed by service date (trains after midnight count for the previous evening). Lines not listed keep their normal timetable."
+}
