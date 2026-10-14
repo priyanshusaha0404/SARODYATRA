@@ -31,11 +31,7 @@ Kolkata Durga Puja WebGIS · FastAPI server
 
 Run:   cd backend  &&  uvicorn main:app --reload --port 8000     → open http://localhost:8000
 """
-import asyncio, json, os, sys, time, hashlib, math, threading, traceback
-try:                                    # logs appear at once on a host (Render) instead of when the buffer fills
-    sys.stdout.reconfigure(line_buffering=True)
-except Exception:
-    pass
+import asyncio, json, os, time, hashlib, math
 # Kolkata time everywhere (a cloud server runs on UTC; Puja closures, metro hours and crowds follow IST)
 os.environ.setdefault("TZ", "Asia/Kolkata")
 if hasattr(time, "tzset"):
@@ -77,33 +73,13 @@ _gem_idx = 0
 GEM_STATE = {"last_ok": None, "last_error": None, "model_used": None}
 
 app = FastAPI(title="Sarodyatra API", version="2.0")
-# The data (road graph, timetables, pandals …) loads in a background thread, so the web server opens its port at
-# once — a small host's health check passes while loading. /api/* requests wait until it is ready.
-S = M = R = RL = BS = J = None
-READY = threading.Event()
-LOAD_ERROR = []
-
-
-def _load_data():
-    global S, M, R, RL, BS, J
-    t0 = time.time()
-    try:
-        print("[Sarodyatra] loading data …", flush=True)
-        S = get_store()
-        M = Metro(S)
-        R = Router(S, M)
-        print(f"[Sarodyatra] road graph ready ({R.N} junctions) · {time.time() - t0:.1f}s", flush=True)
-        RL = Rail()
-        BS = Bus()
-        R.bus = BS
-        J = Journey(S, R, RL, BS)
-        trim_memory()
-        print(f"[Sarodyatra] ready in {time.time() - t0:.1f}s", flush=True)
-    except Exception as e:
-        LOAD_ERROR.append(f"{type(e).__name__}: {e}")
-        traceback.print_exc()
-    finally:
-        READY.set()
+S = get_store()
+M = Metro(S)
+R = Router(S, M)
+RL = Rail()
+BS = Bus()
+R.bus = BS
+J = Journey(S, R, RL, BS)
 
 
 # routing is CPU work: one plan at a time keeps a small server (Render free: 0.1 CPU, 512 MB) responsive and in memory
@@ -166,31 +142,8 @@ async def _weather_loop():
         await asyncio.sleep(1800 if ok else 600)
 
 
-@app.middleware("http")
-async def _wait_ready(request: Request, call_next):
-    p = request.url.path
-    if p.startswith("/api/") and p != "/api/ping":
-        for _ in range(900):                          # up to ~3 min on a cold, slow server
-            if READY.is_set():
-                break
-            await asyncio.sleep(0.2)
-        if not READY.is_set() or LOAD_ERROR:
-            return JSONResponse({"error": "Server is still starting — try again in a minute." if not LOAD_ERROR
-                                 else f"Server failed to load data: {LOAD_ERROR[0]}"}, status_code=503)
-    return await call_next(request)
-
-
 @app.on_event("startup")
 async def _startup():
-    threading.Thread(target=_load_data, name="load-data", daemon=True).start()
-    asyncio.create_task(_after_load())
-
-
-async def _after_load():
-    while not READY.is_set():
-        await asyncio.sleep(0.5)
-    if LOAD_ERROR:
-        return
     refresh_live()
     if WEATHER_FILE.exists():                       # last forecast keeps working offline
         try:
@@ -205,7 +158,7 @@ async def _after_load():
 
 async def _warm():
     """build tonight's road matrices once, right after start, so the first visitor's plan is quick"""
-    await asyncio.sleep(1)
+    await asyncio.sleep(2)
     try:
         now = datetime.now()
         for h in sorted({now.hour, 19}):
