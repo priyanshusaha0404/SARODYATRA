@@ -15,6 +15,7 @@ from scipy.sparse.csgraph import dijkstra, connected_components
 from scipy.spatial import cKDTree
 
 from store import DATA, M_LAT, M_LON, hav
+import graphc
 from crowd import crowd, day_info
 
 CLASS_OF_FLAG = {0: "main", 16: "important", 32: "lane"}
@@ -26,49 +27,75 @@ def parse_hm(s):
 
 
 class Router:
+    """Routes run on the compact graph (graphc.py): one edge per street chain between junctions. A point is snapped
+    to its nearest road vertex; when that vertex lies inside a chain, the search starts / ends part-way along it."""
+    TREES = 12                      # search trees kept per source (way home tries ~15 stations from one pandal)
+
     def __init__(self, store, metro):
         self.store, self.metro = store, metro
         self.cfg = store.config
-        g = np.load(DATA / "graph.npz")
-        self.lon, self.lat = g["lon"], g["lat"]
-        self.u, self.v = g["u"].astype(np.int64), g["v"].astype(np.int64)
-        self.len, self.rid, self.flags = g["length"].astype(np.float64), g["rid"], g["flags"]
-        self.N = len(self.lon)
-        self.walk_ok = (self.flags & 1) > 0
-        self.car_ok = (self.flags & 2) > 0
-        cls = self.flags & 48
+        G = graphc.load(DATA)
+        self.lon, self.lat = G["lon"], G["lat"]            # every OSM vertex (snapping, drawing)
+        self.N0 = len(self.lon)
+        self.kept = G["kept"].astype(np.int64)                # compact node → OSM vertex
+        self.N = len(self.kept)
+        self.cu, self.cv = G["cu"].astype(np.int64), G["cv"].astype(np.int64)
+        self.clen, self.crid, self.cflags = G["clen"], G["crid"], G["cflags"]
+        self.ptr, self.seq, self.cum = G["ptr"], G["seq"], G["cum"]
+        self.E = len(self.cu)
+        self.okid = np.full(self.N0, -1, np.int32); self.okid[self.kept] = np.arange(self.N, dtype=np.int32)
+        chain = np.repeat(np.arange(self.E, dtype=np.int32), np.diff(self.ptr))
+        pos = (np.arange(len(self.seq)) - self.ptr[chain]).astype(np.int32)
+        inner = self.okid[self.seq] < 0
+        self.och = np.full(self.N0, -1, np.int32); self.och[self.seq[inner]] = chain[inner]
+        self.opos = np.zeros(self.N0, np.int32); self.opos[self.seq[inner]] = pos[inner]
+        self._chain_of = chain
+        del pos, inner
+        self.walk_ok = (self.cflags & 1) > 0
+        self.car_ok = (self.cflags & 2) > 0
+        cls = self.cflags & 48
         kmh = self.cfg["drive_kmh"]
-        speed = np.where(cls == 0, kmh["main"], np.where(cls == 16, kmh["important"], kmh["lane"])) / 3.6
-        self.car_sec = self.len / speed
-        # edge lookup (u,v) → edge index (both directions)
-        k = np.r_[self.u * self.N + self.v, self.v * self.N + self.u]
-        self.ek_order = np.argsort(k)
-        self.ek_sorted = k[self.ek_order]
-        self.E = len(self.u)
-        # largest walkable component → snapping targets
-        Aw = self._matrix(self.walk_ok, self.len, directed=False)
-        _, lab = connected_components(Aw, directed=False)
-        big = np.bincount(lab).argmax()
-        self.walk_nodes = np.nonzero(lab == big)[0]
-        self.walk_tree = cKDTree(np.c_[self.lon[self.walk_nodes] * M_LON, self.lat[self.walk_nodes] * M_LAT])
-        Ac = self._matrix(self.car_ok, self.car_sec, directed=False)
-        _, labc = connected_components(Ac, directed=False)
-        bigc = np.bincount(labc).argmax()
-        self.car_nodes = np.nonzero(labc == bigc)[0]
-        self.car_tree = cKDTree(np.c_[self.lon[self.car_nodes] * M_LON, self.lat[self.car_nodes] * M_LAT])
-        self._cache = {}
+        self.cspeed = np.where(cls == 0, kmh["main"], np.where(cls == 16, kmh["important"], kmh["lane"])) / 3.6
+        self.car_sec = self.clen / self.cspeed
+        # largest connected piece of the network → snapping targets (every vertex on it, junction or not)
+        self.walk_nodes, self.walk_tree = self._snap_set(self.walk_ok, self.clen)
+        self.car_nodes, self.car_tree = self._snap_set(self.car_ok, self.car_sec)
+        del self._chain_of
+        self._cache, self._trees = {}, {}
         self.rid_name = {int(r): str(n) for r, n in zip(store.r_rid, store.r_name)}
 
+    def _snap_set(self, ok, w):
+        A = self._matrix(ok, w, directed=False)[0]
+        _, lab = connected_components(A, directed=False)
+        big = np.bincount(lab).argmax()
+        good = ok & (lab[self.cu] == big)
+        on = np.zeros(self.N0, bool)
+        on[self.kept[lab == big]] = True
+        on[self.seq[good[self._chain_of]]] = True
+        verts = np.nonzero(on)[0]
+        tree = cKDTree(np.c_[self.lon[verts] * M_LON, self.lat[verts] * M_LAT])
+        return verts, tree
+
     # ── matrices ──────────────────────────────────────────────────────────
-    def _matrix(self, mask, w, directed, oneway=False):
-        u, v, ww = self.u[mask], self.v[mask], w[mask]
+    def _matrix(self, mask, w, directed):
+        """sparse graph of the usable chains (parallel chains between two junctions → the cheaper one)"""
+        idx = np.nonzero(mask & (self.cu != self.cv))[0]
+        uu, vv, ww = self.cu[idx], self.cv[idx], w[idx]
         if not directed:
-            return csr_matrix((np.r_[ww, ww], (np.r_[u, v], np.r_[v, u])), shape=(self.N, self.N))
-        f = self.flags[mask]
-        fwd = (f & 8) == 0          # allowed u→v unless oneway=-1
-        rev = (f & 4) == 0          # allowed v→u unless oneway=yes
-        return csr_matrix((np.r_[ww[fwd], ww[rev]], (np.r_[u[fwd], v[rev]], np.r_[v[fwd], u[rev]])),
-                          shape=(self.N, self.N))
+            rows, cols, wts, eid = np.r_[uu, vv], np.r_[vv, uu], np.r_[ww, ww], np.r_[idx, idx]
+        else:
+            f = self.cflags[idx]
+            fwd = (f & 8) == 0          # allowed u→v unless oneway=-1
+            rev = (f & 4) == 0          # allowed v→u unless oneway=yes
+            rows, cols = np.r_[uu[fwd], vv[rev]], np.r_[vv[fwd], uu[rev]]
+            wts, eid = np.r_[ww[fwd], ww[rev]], np.r_[idx[fwd], idx[rev]]
+        key = rows * self.N + cols
+        o = np.lexsort((wts, key))
+        key, rows, cols, wts, eid = key[o], rows[o], cols[o], wts[o], eid[o]
+        first = np.r_[True, key[1:] != key[:-1]] if len(key) else np.zeros(0, bool)
+        key, rows, cols, wts, eid = key[first], rows[first], cols[first], wts[first], eid[first]
+        A = csr_matrix((np.maximum(wts, 1e-3), (rows, cols)), shape=(self.N, self.N))
+        return A, key, eid
 
     def closed_rids(self, when, mode):
         """road ids closed for `mode` ('walk' or 'drive') at datetime `when`."""
@@ -102,56 +129,152 @@ class Router:
         key = (mode, hash(frozenset(closed)))
         if key in self._cache:
             return self._cache[key]
-        blocked = np.isin(self.rid, list(closed)) if closed else np.zeros(self.E, bool)
-        if mode == "walk":
-            A = self._matrix(self.walk_ok & ~blocked, self.len, directed=False)
-        else:
-            A = self._matrix(self.car_ok & ~blocked, self.car_sec, directed=True)
-        if len(self._cache) > 12:
-            self._cache.clear()
-        self._cache[key] = A
-        return A
+        blocked = np.isin(self.crid, list(closed)) if closed else np.zeros(self.E, bool)
+        ok = (self.walk_ok if mode == "walk" else self.car_ok) & ~blocked
+        A, k, eid = self._matrix(ok, self.clen if mode == "walk" else self.car_sec, directed=mode != "walk")
+        if len(self._cache) >= 6:
+            self._cache.pop(next(iter(self._cache)))
+            self._trees.clear()
+        M = {"id": key, "mode": mode, "A": A, "key": k, "eid": eid, "ok": ok}
+        self._cache[key] = M
+        return M
 
     # ── helpers ───────────────────────────────────────────────────────────
     def snap(self, lat, lon, mode="walk", k=1):
+        """nearest OSM vertex on the connected network (vertex id, metres away)"""
         tree, nodes = (self.walk_tree, self.walk_nodes) if mode == "walk" else (self.car_tree, self.car_nodes)
         d, j = tree.query([lon * M_LON, lat * M_LAT], k=k)
         if k == 1:
             return int(nodes[j]), float(d)
         return [(int(nodes[jj]), float(dd)) for dd, jj in zip(np.atleast_1d(d), np.atleast_1d(j)) if np.isfinite(dd)]
 
-    def edge_index(self, a, b):
-        key = a * self.N + b
-        i = np.searchsorted(self.ek_sorted, key)
-        if i < len(self.ek_sorted) and self.ek_sorted[i] == key:
-            return int(self.ek_order[i] % self.E)
-        return None
+    def _ends(self, M, n, out):
+        """how vertex n joins the compact graph: [(junction, cost, part of a chain)] — leaving n (out) or reaching it"""
+        k = int(self.okid[n])
+        if k >= 0:
+            return [(k, 0.0, None)]
+        c = int(self.och[n])
+        if c < 0 or not M["ok"][c]:
+            return []
+        i, last = int(self.opos[n]), int(self.ptr[c + 1] - self.ptr[c] - 1)
+        d0, L = float(self.cum[self.ptr[c] + i]), float(self.clen[c])
+        walk = M["mode"] == "walk"
+        rate = 1.0 if walk else 1.0 / float(self.cspeed[c])
+        f = int(self.cflags[c])
+        fwd, rev = walk or not (f & 8), walk or not (f & 4)
+        res = []
+        if out:
+            if rev: res.append((int(self.cu[c]), d0 * rate, (c, i, 0)))
+            if fwd: res.append((int(self.cv[c]), (L - d0) * rate, (c, i, last)))
+        else:
+            if fwd: res.append((int(self.cu[c]), d0 * rate, (c, 0, i)))
+            if rev: res.append((int(self.cv[c]), (L - d0) * rate, (c, last, i)))
+        return res
 
-    def _trace(self, pred, target):
-        path = [target]
-        while pred[path[-1]] >= 0:
-            path.append(int(pred[path[-1]]))
-        return path[::-1]
+    def _aug(self, A, ends):
+        """the graph plus one start node joined to the given junctions (a start part-way along a street)"""
+        ptr = np.r_[A.indptr, A.indptr[-1] + len(ends)]
+        idx = np.r_[A.indices, [k for k, _, _ in ends]].astype(A.indices.dtype)
+        dat = np.r_[A.data, [max(c, 1e-3) for _, c, _ in ends]]
+        return csr_matrix((dat, idx, ptr), shape=(self.N + 1, self.N + 1))
 
-    def _steps(self, nodes):
-        steps = []
-        for a, b in zip(nodes, nodes[1:]):
-            e = self.edge_index(a, b)
-            if e is None:
+    def _search(self, M, src, lim):
+        """shortest-path tree from OSM vertex `src` (kept: a route home tries many stations from one pandal)"""
+        key = (M["id"], src)
+        hit = self._trees.get(key)
+        if hit and hit["lim"] >= lim:
+            return hit
+        if hit:
+            lim = max(lim, hit["lim"] * 2)
+        ends = self._ends(M, src, True)
+        if not ends:
+            return None
+        if len(ends) == 1 and ends[0][1] == 0:
+            dist, pred = dijkstra(M["A"], indices=ends[0][0], return_predecessors=True, limit=lim)
+            virt = None
+        else:
+            dist, pred = dijkstra(self._aug(M["A"], ends), indices=self.N, return_predecessors=True, limit=lim)
+            virt = self.N
+        T = {"lim": lim, "dist": dist, "pred": pred, "ends": ends, "virt": virt, "src": src}
+        self._trees.pop(key, None)
+        if len(self._trees) >= self.TREES:
+            self._trees.pop(next(iter(self._trees)))
+        self._trees[key] = T
+        return T
+
+    def _arrive(self, T, M, n):
+        """cheapest way to reach OSM vertex n in tree T: (cost, junction or None, last part of a chain)"""
+        best = None
+        dist = T["dist"]
+        for k, c, seg in self._ends(M, n, False):
+            if k < len(dist) and np.isfinite(dist[k]) and (best is None or dist[k] + c < best[0]):
+                best = (float(dist[k]) + c, k, seg)
+        s = T["src"]
+        if s is not None and s == n:
+            return (0.0, None, None)
+        if s is not None and self.okid[s] < 0 and self.och[s] == self.och[n] and self.och[n] >= 0:   # both on one street
+            c = int(self.och[n]); i, j = int(self.opos[s]), int(self.opos[n])
+            f = int(self.cflags[c]); walk = M["mode"] == "walk"
+            if M["ok"][c] and (walk or not (f & (8 if j > i else 4))):
+                d = abs(float(self.cum[self.ptr[c] + j]) - float(self.cum[self.ptr[c] + i])) * (1.0 if walk else 1.0 / float(self.cspeed[c]))
+                if best is None or d < best[0]:
+                    best = (d, None, (c, i, j))
+        return best
+
+    def _segments(self, T, M, best):
+        """the route as pieces of chains: [(chain, from position, to position)]"""
+        _, k, seg_t = best
+        if k is None:
+            return [seg_t] if seg_t else []
+        pred, nodes = T["pred"], [k]
+        while pred[nodes[-1]] >= 0:
+            nodes.append(int(pred[nodes[-1]]))
+        nodes.reverse()
+        segs = []
+        if T["virt"] is not None and nodes[0] == T["virt"]:
+            nodes = nodes[1:]
+            opts = [(c, s) for kk, c, s in T["ends"] if kk == nodes[0]]
+            if opts:
+                s = min(opts)[1]
+                if s:
+                    segs.append(s)
+        for x, y in zip(nodes, nodes[1:]):
+            i = int(np.searchsorted(M["key"], x * self.N + y))
+            e = int(M["eid"][i])
+            last = int(self.ptr[e + 1] - self.ptr[e] - 1)
+            segs.append((e, 0, last) if self.cu[e] == x else (e, last, 0))
+        if seg_t:
+            segs.append(seg_t)
+        return segs
+
+    def _expand(self, segs, start=None):
+        """chain pieces → OSM vertices along the route, metres, and the roads in order"""
+        pts, steps, meters = [], [], 0.0
+        for c, i0, i1 in segs:
+            if i0 == i1:
                 continue
-            nm = self.rid_name.get(int(self.rid[e]), "") or "unnamed lane"
-            L = float(self.len[e])
+            b = int(self.ptr[c])
+            ids = self.seq[b + i0:b + i1 + 1] if i0 < i1 else self.seq[b + i1:b + i0 + 1][::-1]
+            m = abs(float(self.cum[b + i1]) - float(self.cum[b + i0]))
+            meters += m
+            ids = ids.tolist()
+            if pts and pts[-1] == ids[0]:
+                ids = ids[1:]
+            pts.extend(ids)
+            nm = self.rid_name.get(int(self.crid[c]), "") or "unnamed lane"
             if steps and steps[-1]["road"] == nm:
-                steps[-1]["m"] += L
+                steps[-1]["m"] += m
             else:
-                steps.append({"road": nm, "m": L})
+                steps.append({"road": nm, "m": m})
+        if not pts and start is not None:
+            pts = [start]
         merged = []
         for s in steps:
             if merged and s["m"] < 25 and merged[-1]["road"] != s["road"]:
                 merged[-1]["m"] += s["m"]
             else:
                 merged.append(s)
-        return [{"road": s["road"], "m": int(round(s["m"]))} for s in merged if s["m"] >= 5]
+        return pts, meters, [{"road": s["road"], "m": int(round(s["m"]))} for s in merged if s["m"] >= 5]
 
     def _coords(self, nodes):
         return [[round(float(self.lon[n]), 6), round(float(self.lat[n]), 6)] for n in nodes]
@@ -160,52 +283,66 @@ class Router:
     def walk(self, a, b, when=None):
         when = when or datetime.now()
         closed = self.closed_rids(when, "walk")
-        A = self.matrix_for("walk", closed)
+        M = self.matrix_for("walk", closed)
         s, ds = self.snap(a[0], a[1], "walk")
         t, dt = self.snap(b[0], b[1], "walk")
         straight = hav(a[0], a[1], b[0], b[1])
-        dist, pred = dijkstra(A, indices=s, return_predecessors=True, limit=straight * 3 + 3000)
-        if not np.isfinite(dist[t]):
-            dist, pred = dijkstra(A, indices=s, return_predecessors=True)
-            if not np.isfinite(dist[t]):
+        T = self._search(M, s, straight * 2.2 + 2000)
+        best = self._arrive(T, M, t) if T else None
+        if not best:
+            T = self._search(M, s, np.inf)
+            best = self._arrive(T, M, t) if T else None
+            if not best:
                 return None
-        nodes = self._trace(pred, t)
-        meters = float(dist[t]) + ds + dt
+        nodes, _, steps = self._expand(self._segments(T, M, best), s)
+        meters = best[0] + ds + dt
         cal = self.store.calendar
         peak = cal["hour_curve"][when.hour] * day_info(cal, on_date=when.date())["factor"]
         mins = meters / self.cfg["walk_m_per_min"] * (1 + self.cfg["crowd_walk_slowdown"] * peak)
         coords = [[round(a[1], 6), round(a[0], 6)]] + self._coords(nodes) + [[round(b[1], 6), round(b[0], 6)]]
         return {"mode": "walk", "meters": int(meters), "minutes": round(mins, 1), "coords": coords,
-                "steps": self._steps(nodes), "closures_considered": len(closed)}
+                "steps": steps, "closures_considered": len(closed)}
 
     def drive(self, a, b, when=None):
         when = when or datetime.now()
         closed = self.closed_rids(when, "drive")
-        A = self.matrix_for("drive", closed)
+        M = self.matrix_for("drive", closed)
         s, ds = self.snap(a[0], a[1], "drive")
-        lim = (hav(a[0], a[1], b[0], b[1]) * 3 + 4000) / 4
-        secs, pred = dijkstra(A, indices=s, return_predecessors=True, limit=lim)
+        straight = hav(a[0], a[1], b[0], b[1])
         cands = self.snap(b[0], b[1], "drive", k=80)
 
-        def pick(secs):
+        def pick(T):
             best = None
             for node, dd in cands:
-                if not np.isfinite(secs[node]):
+                r = self._arrive(T, M, node)
+                if not r:
                     continue
-                score = secs[node] / 60 + dd * 1.25 / self.cfg["walk_m_per_min"] * 1.6
+                score = r[0] / 60 + dd * 1.25 / self.cfg["walk_m_per_min"] * 1.6
                 if best is None or score < best[0]:
-                    best = (score, node, dd)
+                    best = (score, node, dd, r)
             return best
 
-        best, first = pick(secs), None
+        best, first, T = None, None, None
+        for lim in ((straight * 2.2 + 3000) / 4, (straight * 3 + 4000) / 2):
+            T = self._search(M, s, lim)
+            best = pick(T) if T else None
+            if best:
+                break
         if not best:
             # the start is inside a no-vehicle zone (Puja closures): walk out to the nearest road a taxi can use
-            near = [(n, d) for n, d in self.snap(a[0], a[1], "drive", k=60) if d <= 700]
+            near = [(n, d) for n, d in self.snap(a[0], a[1], "drive", k=200) if d <= 700 and self.okid[n] >= 0]
             if near:
-                secs, pred, src = dijkstra(A, indices=[n for n, _ in near], return_predecessors=True, limit=lim, min_only=True)
-                best = pick(secs)
+                ends = [(int(self.okid[n]), 0.0, None) for n, _ in near]
+                lim = (straight * 3 + 4000) / 2
+                dist, pred = dijkstra(self._aug(M["A"], ends), indices=self.N, return_predecessors=True, limit=lim)
+                T = {"lim": lim, "dist": dist, "pred": pred, "ends": ends, "virt": self.N, "src": None}
+                best = pick(T)
                 if best:
-                    s0 = int(src[best[1]])
+                    k0 = best[3][1]
+                    p = T["pred"]
+                    while k0 is not None and p[k0] >= 0 and p[k0] != self.N:
+                        k0 = int(p[k0])
+                    s0 = int(self.kept[k0]) if k0 is not None else int(self.kept[ends[0][0]])
                     first = self.walk(a, (float(self.lat[s0]), float(self.lon[s0])), when)
                     if first:
                         first["note"] = "walk_first"
@@ -213,15 +350,14 @@ class Router:
                         when = when + timedelta(minutes=first["minutes"])
         if not best:
             return None
-        _, node, dd = best
-        nodes = self._trace(pred, node)
-        meters = float(sum(self.len[self.edge_index(x, y)] for x, y in zip(nodes, nodes[1:]) if self.edge_index(x, y) is not None))
+        _, node, dd, r = best
+        nodes, meters, steps = self._expand(self._segments(T, M, r), s)
         cal = self.store.calendar
         peak = cal["hour_curve"][when.hour] * day_info(cal, on_date=when.date() if when.hour >= 5 else (when - timedelta(days=1)).date())["factor"]
         congestion = 1 + 0.9 * peak          # Puja-night traffic: up to ~1.9× slower at the Ashtami peak
-        drive = {"mode": "drive", "meters": int(meters), "minutes": round(float(secs[node]) / 60 * congestion + 3, 1),
+        drive = {"mode": "drive", "meters": int(meters), "minutes": round(r[0] / 60 * congestion + 3, 1),
                  "congestion": round(congestion, 2),
-                 "coords": [[round(a[1], 6), round(a[0], 6)]] + self._coords(nodes), "steps": self._steps(nodes),
+                 "coords": [[round(a[1], 6), round(a[0], 6)]] + self._coords(nodes), "steps": steps,
                  "closures_considered": len(closed)}
         fare = self.cfg["taxi_fare"]
         km = meters / 1000

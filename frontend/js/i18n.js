@@ -422,7 +422,9 @@ const STR = {
   'sv.savedPlan':     ['Plan saved', 'পরিকল্পনা সংরক্ষিত', 'योजना सहेजी गई'],
 
   /* general */
-  'g.backendDown':    ['Sarodyatra server is not running — start it with run.bat and reload.', 'Sarodyatra সার্ভার চলছে না — run.bat দিয়ে চালু করে রিলোড করুন।', 'Sarodyatra सर्वर नहीं चल रहा — run.bat से शुरू करके रीलोड करें।'],
+  'g.backendDown':    ["Can't reach the Sarodyatra server — check your internet and try again in a minute.", 'Sarodyatra সার্ভারে পৌঁছানো যাচ্ছে না — ইন্টারনেট দেখে এক মিনিট পরে আবার চেষ্টা করুন।', 'Sarodyatra सर्वर तक नहीं पहुँच पा रहे — इंटरनेट देखें और एक मिनट बाद फिर कोशिश करें।'],
+  'g.slow':           ['The server is waking up — please try again in a minute.', 'সার্ভার চালু হচ্ছে — এক মিনিট পরে আবার চেষ্টা করুন।', 'सर्वर शुरू हो रहा है — एक मिनट बाद फिर कोशिश करें।'],
+  'plan.failed':      ["Couldn't make the plan just now — please try again.", 'এই মুহূর্তে প্ল্যান তৈরি করা গেল না — আবার চেষ্টা করুন।', 'अभी प्लान नहीं बन पाया — कृपया फिर कोशिश करें।'],
   'g.locBlocked':     ['Location is off — using the map centre.', 'লোকেশন বন্ধ — ম্যাপের কেন্দ্র ব্যবহার হচ্ছে।', 'लोकेशन बंद है — मानचित्र का केंद्र उपयोग हो रहा है।'],
   'g.myLocation':     ['My location', 'আমার অবস্থান', 'मेरी लोकेशन'],
   'g.zoomIn':         ['Zoom in', 'জুম ইন', 'ज़ूम इन'],

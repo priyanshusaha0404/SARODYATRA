@@ -14,10 +14,17 @@ GS_PASS = os.getenv("GEOSERVER_PASSWORD", "geoserver")
 WS = os.getenv("GEOSERVER_WORKSPACE", "pujox")
 NS_URI = os.getenv("GEOSERVER_NS_URI", "http://pujox.kolkata")
 
+# The hosted site (Render) has no GeoServer: every layer comes from the API instead, so it is switched off there
+# unless a GEOSERVER_URL is given. On a laptop it is used whenever it runs. GEOSERVER=on / off forces either way.
+_mode = os.getenv("GEOSERVER", "auto").lower()
+ENABLED = _mode in ("on", "1", "true") or (_mode == "auto" and not (os.getenv("RENDER") and not os.getenv("GEOSERVER_URL")))
 _state = {"up": None, "layers": []}
 
 
 async def health(client: httpx.AsyncClient):
+    if not ENABLED:
+        _state.update(up=False, layers=[], disabled=True, reason="GeoServer is not used on the hosted site — all layers come from the API")
+        return dict(_state)
     try:
         r = await client.get(f"{GS_URL}/rest/workspaces/{WS}/layers.json", auth=(GS_USER, GS_PASS), timeout=4)
         if r.status_code == 200:

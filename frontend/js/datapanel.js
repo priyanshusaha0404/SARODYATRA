@@ -14,6 +14,7 @@ const DataPanel = {
   },
   status() {
     const b = U.$('#statusBtn');
+    b.hidden = !OGC.up;                // the chip only appears when GeoServer is connected (localhost); the hosted site has none
     b.classList.toggle('up', OGC.up);
     U.$('#statusText').textContent = t(OGC.up ? 'status.live' : 'status.local');
     b.title = OGC.up ? t('data.connected', { ws: CFG.WS, n: OGC.layers.length }) : t('data.offline');

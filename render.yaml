@@ -19,5 +19,11 @@ services:
         value: "0"
       - key: GEMINI_MODEL
         value: gemini-2.5-flash
+      - key: GEMINI_FALLBACK_MODELS # tried with the same keys when the main model is out of quota
+        value: gemini-2.5-flash-lite,gemini-2.0-flash
+      - key: TZ
+        value: Asia/Kolkata
+      - key: GEOSERVER              # no GeoServer on Render — every layer comes from the API
+        value: "off"
       - key: GEMINI_API_KEYS        # secret: Render asks for it once (comma-separated keys); Sarathi works without it too
         sync: false

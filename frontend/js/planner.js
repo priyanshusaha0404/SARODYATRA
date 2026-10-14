@@ -237,6 +237,7 @@ const Planner = {
     return !!(opts.area || travel === 'train' || budget > 0 || this.outside(this.stops[0]) || (travel === 'road' && this.outside(this.stops[0])));
   },
   async run(opts = {}) {
+    this.lastError = null;
     const pandals = this.stops.slice(1).filter(s => s.pid);
     if (this.stops.length < 2 && !opts.area && !this.area && !opts.anywhere) { U.toast(t('plan.needStop')); return null; }
     if (!opts.keepModes && opts.optimize !== false) this.legModes = {};
@@ -271,7 +272,12 @@ const Planner = {
       r = await U.post(`${CFG.API}/plan`, body);
     }
     btn.disabled = false;
-    if (r.error || r.detail) { U.toast(r._status === 0 ? t('g.backendDown') : String(r.error || r.detail)); this.render(); return null; }
+    if (r.error || r.detail) {
+      // timeout / server asleep / server error → a clear message, never a raw code
+      this.lastError = r._status === 0 ? t(r.error === 'timeout' ? 'g.slow' : 'g.backendDown') : r._status >= 500 || /^HTTP \d/.test(String(r.error)) ? t('plan.failed') : String(r.error || r.detail);
+      U.toast(this.lastError, 6000); this.render(); return null;
+    }
+    this.lastError = null;
     // keep the visitor's start; pandals in the planned order
     const keep0 = this.stops[0];
     this.stops = [keep0, ...r.stops.slice(1).filter(s => s.pid || (!journey && s.type !== 'rail_station' && !String(s.name).endsWith('(return)')))

@@ -47,9 +47,12 @@ Every push redeploys automatically (`autoDeployTrigger: commit`).
 | | |
 |---|---|
 | **Sleep** | The free service sleeps after ~15 min without visitors; the next visit wakes it in about a minute. Open it once before a demo. |
-| **Memory** | 512 MB. The app trims its memory after each plan (`MALLOC_ARENA_MAX=2` + `malloc_trim`) and stays near 300–420 MB. |
+| **Memory** | 512 MB. The app trims its memory after each plan (`MALLOC_ARENA_MAX=2` + `malloc_trim`) and stays near 300–350 MB. |
 | **Disk** | Not permanent: visitor reports and tile/POI caches reset on each deploy. |
-| **GeoServer** | Not on Render. The status chip shows **Local data** and everything runs from the same files through the API. Show the WMS / WFS / WFS-T / WCS parts from your laptop (`run.bat` + GeoServer) in the viva. |
+| **GeoServer** | Not on Render (switched off automatically there). Every layer — pandals, metro, trains, roads, closures, bus, puja zones, crowd surface — comes from the API, and no status chip is shown. The GeoServer version (WMS / WFS / WFS-T / WCS) runs from the separate `pujox-geoserver-local` folder on your laptop. |
+| **Speed** | Routes run on a compact road graph (`data/graph_c.npz`, ~4× fewer nodes) and one plan is computed at a time, so a whole evening plan takes a few seconds even on the free 0.1 CPU. |
+| **Time zone** | The server runs on Kolkata time (`TZ=Asia/Kolkata` is set in `main.py`). |
+| **Stay awake (optional)** | A free monitor such as UptimeRobot or cron-job.org can open `https://<your-site>/api/ping` every 10 minutes so the site does not sleep. |
 | **Keys** | Change keys in Render → your service → **Environment** → `GEMINI_API_KEYS` → Save (it redeploys). |
 
 `render.yaml` settings: Python 3.12 (`.python-version`), Singapore region, health check `/api/ping`,

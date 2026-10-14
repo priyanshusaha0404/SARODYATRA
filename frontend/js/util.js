@@ -50,7 +50,7 @@ const U = {
     } catch (e) { return { error: e.name === 'AbortError' ? 'timeout' : e.message, _status: 0 }; }
     finally { clearTimeout(id); }
   },
-  post(url, body) { return U.json(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }); },
+  post(url, body, timeout = 120000) { return U.json(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }, timeout); },   // plans can take a while on a small server
   download(content, name, type = 'text/plain') {
     const blob = content instanceof Blob ? content : new Blob([content], { type });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;

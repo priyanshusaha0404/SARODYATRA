@@ -739,3 +739,7 @@ body.tilt .leaflet-marker-pane .pm,body.tilt .leaflet-marker-pane .num{transform
 .tile-btn{border:1.5px dashed var(--red-2);background:var(--red-soft);text-align:left;cursor:pointer;font:inherit}
 .tile-btn b{color:var(--red)!important}
 .stop.start.unset .nm b{color:var(--red)}
+/* puja-zone names drawn from the API (GeoServer draws its own labels) */
+.leaflet-tooltip.zone-lbl{background:transparent;border:0;box-shadow:none;font:700 16px/1 'Tiro Bangla',Georgia,serif;color:#7a1a22;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 2px #fff}
+.leaflet-tooltip.zone-lbl::before{display:none}
+.status[hidden]{display:none}

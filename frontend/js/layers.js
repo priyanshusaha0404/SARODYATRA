@@ -59,9 +59,10 @@ const Layers = {
       + this.row('c:active', Roads.activeOnly, t('close.activeOnly'));
     const rail = Object.keys(Rail.COLORS).map(c => this.row('l:' + c, Rail.on.has(c), Rail.corrName(c), `<span class="sx rl" style="--c:${Rail.COLORS[c]}"></span>`)).join('')
       + this.row('l:stations', Rail.opts.stations, t('rail.stations'));
-    const extras = OGC.has('puja_zones') || OGC.has('crowd_peak') ? `<div class="lp-sec"><div class="lp-sub" style="padding-left:0">
-      ${OGC.has('puja_zones') ? this.row('x:zones', this.extra.zones, t('lyr.puja_zones') + ' · WMS') : ''}
-      ${OGC.has('crowd_peak') ? this.row('x:crowd', this.extra.crowd, t('lyr.crowd_peak') + ' · WMS/WCS') : ''}</div></div>` : '';
+    // zones + crowd surface: GeoServer WMS when it runs (localhost), otherwise the same data from the API
+    const extras = `<div class="lp-sec"><div class="lp-sub" style="padding-left:0">
+      ${this.row('x:zones', this.extra.zones, t('lyr.puja_zones') + (OGC.has('puja_zones') ? ' · WMS' : ''))}
+      ${this.row('x:crowd', this.extra.crowd, t('lyr.crowd_peak') + (OGC.has('crowd_peak') ? ' · WMS/WCS' : ''))}</div></div>`;
     P.innerHTML = `<div class="lp-head" style="padding-bottom:6px">${U.icon('layers')}<span>${U.esc(t('layer.panel'))}</span></div>`
       + sec('pandals', pand) + sec('metro', metro) + sec('rail', rail) + sec('roads', roads) + sec('closures', clos) + extras;
     P.querySelectorAll('[data-sw]').forEach(i => i.onchange = () => this.set(i.dataset.sw, i.checked));
@@ -77,10 +78,26 @@ const Layers = {
     if (g === 'x') this.overlay(k, v);
     this.panel(); this.legend();
   },
-  overlay(k, v) {
+  ZONE_COL: { North: '#C8102E', Central: '#9A6A12', South: '#3F4BA8', East: '#0E7C86', West: '#7A3E9D' },
+  CROWD_BOUNDS: [[22.42, 88.24], [22.70, 88.50]],          // data/crowd_peak.tif (0.001° grid) → assets/crowd_peak.png
+  async overlay(k, v) {
     this.extra[k] = v;
-    if (k === 'zones') { if (this.zonesLyr) MapApp.map.removeLayer(this.zonesLyr); this.zonesLyr = v ? OGC.wms('puja_zones', { zIndex: 250 }).addTo(MapApp.map) : null; }
-    if (k === 'crowd') { if (this.crowdLyr) MapApp.map.removeLayer(this.crowdLyr); this.crowdLyr = v ? OGC.wms('crowd_peak', { zIndex: 260, opacity: .85 }).addTo(MapApp.map) : null; }
+    const m = MapApp.map;
+    if (k === 'zones') {
+      if (this.zonesLyr) m.removeLayer(this.zonesLyr);
+      this.zonesLyr = null;
+      if (!v) return;
+      if (OGC.has('puja_zones')) { this.zonesLyr = OGC.wms('puja_zones', { zIndex: 250 }).addTo(m); return; }
+      const gj = this._zones || (this._zones = await U.json(`${CFG.API}/data/puja_zones`));
+      if (!gj || gj.error || !this.extra.zones) return;
+      this.zonesLyr = L.geoJSON(gj, { interactive: false, style: f => { const c = this.ZONE_COL[f.properties.zone] || '#C8102E'; return { color: c, weight: 1.6, dashArray: '8 6', fillColor: c, fillOpacity: .07 }; },
+        onEachFeature: (f, l) => l.bindTooltip(t('zone.' + f.properties.zone) || f.properties.zone, { permanent: true, direction: 'center', className: 'zone-lbl' }) }).addTo(m);
+    }
+    if (k === 'crowd') {
+      if (this.crowdLyr) m.removeLayer(this.crowdLyr);
+      this.crowdLyr = !v ? null : OGC.has('crowd_peak') ? OGC.wms('crowd_peak', { zIndex: 260, opacity: .85 }).addTo(m)
+        : L.imageOverlay('assets/crowd_peak.png', this.CROWD_BOUNDS, { opacity: .85, interactive: false, className: 'crowd-img' }).addTo(m);
+    }
   },
 
   legend() {

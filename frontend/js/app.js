@@ -11,7 +11,7 @@ const App = {
     I18N.apply();
     this.langSwitch();
     MapApp.init();
-    const [boot, health] = await Promise.all([U.json(`${CFG.API}/bootstrap`), U.json(`${CFG.API}/health`)]);
+    const [boot, health] = await Promise.all([U.json(`${CFG.API}/bootstrap`, {}, 90000), U.json(`${CFG.API}/health`, {}, 90000)]);   // a sleeping free server takes ~1 min to wake
     if (boot.error) { U.toast(t('g.backendDown'), 9000); return; }
     this.cfg = boot.config; this.health = health;
     OGC.setStatus(health.geoserver);

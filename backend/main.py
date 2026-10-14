@@ -32,6 +32,10 @@ Kolkata Durga Puja WebGIS · FastAPI server
 Run:   cd backend  &&  uvicorn main:app --reload --port 8000     → open http://localhost:8000
 """
 import asyncio, json, os, time, hashlib, math
+# Kolkata time everywhere (a cloud server runs on UTC; Puja closures, metro hours and crowds follow IST)
+os.environ.setdefault("TZ", "Asia/Kolkata")
+if hasattr(time, "tzset"):
+    time.tzset()
 from datetime import datetime, date, timedelta
 from pathlib import Path
 
@@ -62,7 +66,11 @@ ROOT = BASE.parent
 FRONT = ROOT / "frontend"
 GEMINI_KEYS = [k.strip() for k in os.getenv("GEMINI_API_KEYS", "").split(",") if k.strip()]
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+# when every key is out of quota for the main model, the same keys try these (each model has its own free quota)
+GEMINI_FALLBACK = [m.strip() for m in os.getenv("GEMINI_FALLBACK_MODELS", "gemini-2.5-flash-lite,gemini-2.0-flash").split(",")
+                   if m.strip() and m.strip() != GEMINI_MODEL]
 _gem_idx = 0
+GEM_STATE = {"last_ok": None, "last_error": None, "model_used": None}
 
 app = FastAPI(title="Sarodyatra API", version="2.0")
 S = get_store()
@@ -72,6 +80,15 @@ RL = Rail()
 BS = Bus()
 R.bus = BS
 J = Journey(S, R, RL, BS)
+
+
+# routing is CPU work: one plan at a time keeps a small server (Render free: 0.1 CPU, 512 MB) responsive and in memory
+HEAVY = asyncio.Semaphore(1)
+
+
+async def heavy(fn, *args):
+    async with HEAVY:
+        return await asyncio.to_thread(fn, *args)
 
 
 def trim_memory():
@@ -134,8 +151,22 @@ async def _startup():
         except ValueError:
             pass
     asyncio.create_task(_weather_loop())
+    asyncio.create_task(_warm())
     if os.getenv("OFFLINE_PREFETCH", "1") != "0":
         asyncio.create_task(_auto_prefetch())
+
+
+async def _warm():
+    """build tonight's road matrices once, right after start, so the first visitor's plan is quick"""
+    await asyncio.sleep(2)
+    try:
+        now = datetime.now()
+        for h in sorted({now.hour, 19}):
+            w = now.replace(hour=h, minute=0)
+            await heavy(R.route, (22.5995, 88.3716), (22.5880, 88.3640), "auto", w)
+        trim_memory()
+    except Exception as e:
+        print("[Sarodyatra] warm-up skipped:", type(e).__name__, e)
 
 
 async def _auto_prefetch():
@@ -170,7 +201,7 @@ def ll(s: str):
 @app.get("/api/health")
 async def health():
     st = await gs.health(client)
-    return {"geoserver": st, "workspace": gs.WS, "ai": {"gemini_keys": len(GEMINI_KEYS), "model": GEMINI_MODEL},
+    return {"geoserver": st, "workspace": gs.WS, "ai": {"gemini_keys": len(GEMINI_KEYS), "model": GEMINI_MODEL, "fallback": GEMINI_FALLBACK, **GEM_STATE},
             "data": {"pandals": len(S.pandals["features"]), "stations": len(S.stations["features"]),
                      "roads": int(len(S.r_rid)), "closures": len(S.closures["features"])},
             "tts": TTS_OK}
@@ -228,7 +259,7 @@ async def road_at(lat: float, lon: float, when: str | None = None):
 @app.get("/api/route")
 async def route(frm: str, to: str, mode: str = "auto", when: str | None = None):
     a, b = ll(frm), ll(to)
-    r = await asyncio.to_thread(R.route, a, b, mode, parse_when(when))
+    r = await heavy(R.route, a, b, mode, parse_when(when))
     if not r:
         return JSONResponse({"error": "No route found between these points."}, status_code=404)
     return r
@@ -240,7 +271,7 @@ async def plan(request: Request):
     stops = [s for s in body.get("stops", []) if "lat" in s and "lon" in s]
     if len(stops) < 2:
         return JSONResponse({"error": "Add at least two stops."}, status_code=400)
-    res = await asyncio.to_thread(R.plan, stops, body.get("mode", "auto"), body.get("start"), body.get("day"),
+    res = await heavy(R.plan, stops, body.get("mode", "auto"), body.get("start"), body.get("day"),
                                   bool(body.get("optimize", True)), bool(body.get("return_to_start", False)), body.get("leg_modes"))
     trim_memory()
     return res
@@ -256,7 +287,7 @@ async def journey(request: Request):
             body["area"] = None
         except HTTPException:
             return JSONResponse({"error": f"I don't know the area \"{body['area']}\" — try a zone (North, South…), a neighbourhood or a station."}, status_code=400)
-    res = await asyncio.to_thread(J.plan, body)
+    res = await heavy(J.plan, body)
     trim_memory()
     if res.get("error"):
         return JSONResponse(res, status_code=400)
@@ -684,24 +715,36 @@ async def add_closure(request: Request):
 
 # ── Gemini proxy with key rotation ────────────────────────────────────────
 async def _gemini_call(body: bytes):
-    """POST a generateContent body, rotating keys on 429/503. Returns (status, content bytes)."""
+    """POST a generateContent body, rotating keys on 429/503 and then falling back to lighter models.
+    Returns (status, content bytes)."""
     global _gem_idx
     n = len(GEMINI_KEYS)
     last = (502, json.dumps({"error": {"message": "Gemini unreachable"}}).encode())
-    for _ in range(n):
-        key = GEMINI_KEYS[_gem_idx % n]
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent?key={key}"
-        try:
-            r = await client.post(url, content=body, headers={"Content-Type": "application/json"}, timeout=60)
-        except Exception as e:
-            last = (502, json.dumps({"error": {"message": f"Gemini unreachable: {type(e).__name__}"}}).encode())
-            _gem_idx += 1
-            continue
-        if r.status_code in (429, 503):
-            _gem_idx += 1
-            last = (r.status_code, r.content)
-            continue
-        return r.status_code, r.content
+    for model in [GEMINI_MODEL] + GEMINI_FALLBACK:
+        for _ in range(n):
+            key = GEMINI_KEYS[_gem_idx % n]
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}"
+            try:
+                r = await client.post(url, content=body, headers={"Content-Type": "application/json"}, timeout=45)
+            except Exception as e:
+                last = (502, json.dumps({"error": {"message": f"Gemini unreachable: {type(e).__name__}"}}).encode())
+                GEM_STATE["last_error"] = f"{datetime.now():%H:%M} {model}: {type(e).__name__}"
+                _gem_idx += 1
+                continue
+            if r.status_code in (429, 500, 503):
+                _gem_idx += 1
+                last = (r.status_code, r.content)
+                GEM_STATE["last_error"] = f"{datetime.now():%H:%M} {model}: HTTP {r.status_code}"
+                continue
+            if r.status_code == 404:              # model not offered to this key / retired → next model
+                last = (r.status_code, r.content)
+                GEM_STATE["last_error"] = f"{datetime.now():%H:%M} {model}: HTTP 404"
+                break
+            if r.status_code == 200:
+                GEM_STATE.update(last_ok=f"{datetime.now():%H:%M}", model_used=model)
+            else:
+                GEM_STATE["last_error"] = f"{datetime.now():%H:%M} {model}: HTTP {r.status_code}"
+            return r.status_code, r.content
     return last
 
 
@@ -819,6 +862,8 @@ async def translate(pid: str, lang: str):
 # ── GeoServer reverse proxy (same origin → no CORS) ───────────────────────
 @app.api_route("/geoserver/{path:path}", methods=["GET", "POST"])
 async def gs_proxy(path: str, request: Request):
+    if not gs.ENABLED:
+        return JSONResponse({"error": "GeoServer is not used on this server"}, status_code=404)
     url = f"{gs.GS_URL}/{path}"
     if path.startswith("rest") or "transaction" in str(request.url.query).lower():
         raise HTTPException(403, "Write/REST access goes through the Sarodyatra API only.")

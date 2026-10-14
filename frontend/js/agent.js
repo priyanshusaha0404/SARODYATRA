@@ -437,7 +437,7 @@ Rules:
         if (a.start_time) { U.$('#plStart').value = a.start_time; Planner._startEdited = true; }
         App.leftTab('plan');
         const R = await Planner.run({ mode: a.mode, start: a.start_time });
-        if (!R) return { error: 'planning failed' };
+        if (!R) return { error: Planner.lastError || t('plan.failed') };
         return { day: R.day, start: start.name, finish: R.finish, totals: R.totals, warnings: R.warnings.map(w => Planner.warnText(w)),
                  timeline: R.timeline.map(r => `${r.arrive} ${r.name}${r.crowd ? ` [${r.crowd}, queue ~${r.queue_min}m]` : ''}`),
                  legs: R.legs.map(l => l.mode === 'metro' ? `${l.line} Line ${l.from}→${l.to}` : l.mode === 'bus' ? `bus ${U.busNames(l)} from ${l.from} to ${l.to} (take only these)` : `${l.mode} ${Math.round(l.meters)} m`) };
@@ -467,7 +467,7 @@ Rules:
         else { opts.anywhere = true; Planner.stops = [Planner.stops[0]]; Planner.area = null; }
         App.leftTab('plan');
         const R = await Planner.run(opts);
-        if (!R) return { error: 'planning failed' };
+        if (!R) return { error: Planner.lastError || t('plan.failed') };
         this.ctx.planned = true; this.ctx.area = a.area || this.ctx.area;
         return this.journeyBrief(R);
       }
@@ -478,7 +478,7 @@ Rules:
         if (!pick.length) return { error: 'No hop with a bus option', hops_with_bus: hops };
         pick.forEach(h => { Planner.legModes[h.hop] = mode === 'bus' ? 'bus:' + h.bus[0].ref : 'walk'; });
         const R2 = await Planner.run({ optimize: false, keepModes: true });
-        return R2 ? { ok: true, changed: pick.length, ...this.journeyBrief(R2) } : { error: 'replanning failed' };
+        return R2 ? { ok: true, changed: pick.length, ...this.journeyBrief(R2) } : { error: Planner.lastError || t('plan.failed') };
       }
       case 'find_trains': {
         const q = new URLSearchParams({ frm: a.from, to: a.to, when: Clock.when() });

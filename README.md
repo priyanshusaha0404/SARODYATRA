@@ -28,8 +28,9 @@ cd backend
 python -m uvicorn main:app --reload --port 8000
 ```
 
-Open **http://localhost:8000**. The status chip shows **Live** when GeoServer answers, otherwise **Local data**
-(the app still works from the same files).
+Open **http://localhost:8000**. When GeoServer answers, a green **Live** chip appears at the top (it opens the
+GeoServer panel: WMS / WFS / WCS links, OGC request log, organiser tools). Without GeoServer there is no chip and every
+layer comes from the API — the same files, the same map. The hosted site (Render) always runs this way.
 
 **Sarathi with full AI (optional):** put free Gemini keys in `backend\.env` → `GEMINI_API_KEYS=key1,key2` and restart.
 Keys stay on the server; the browser never sees them. Without keys Sarathi uses its built-in offline brain (English, বাংলা, Banglish, हिंदी). With keys, anything the offline brain understands for sure (outings, routes, trains, food, help) is still answered instantly; the AI takes the open questions.
